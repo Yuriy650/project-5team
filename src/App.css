@@ -2,19 +2,22 @@ body {
   background-color: orange;
 }
 .app-wrapper {
+  height: 1200px;
   display: grid;
   grid-template-areas:
 "header header"
 "n content";
-  grid-auto-rows: 100px 1fr;
-  grid-template-columns: 2fr 12fr;
+  grid-auto-rows: 120px 1fr;
+  grid-template-columns: 1fr 10fr;
   grid-gap: 10px
 }
 .header {
   grid-area: header;
+  background-color: darkgrey;
 }
 .navbar {
-  grid-area: n
+  grid-area: n;
+  background-color: darkgrey;
 }
 .content {
   grid-area: content;
