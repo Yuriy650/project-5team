@@ -1,19 +1,26 @@
 body {
   background-color: orange;
 }
+.app-wrapper {
+  display: grid;
+  grid-template-areas:
+"header header"
+"n content";
+  grid-auto-rows: 100px 1fr;
+  grid-template-columns: 2fr 12fr;
+  grid-gap: 10px
+}
+.header {
+  grid-area: header;
+}
+.navbar {
+  grid-area: n
+}
+.content {
+  grid-area: content;
+}
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -31,11 +38,4 @@ body {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+
