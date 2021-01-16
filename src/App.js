@@ -15,7 +15,7 @@ function App() {
           <div className="content">
               <Route path='/home' component={Home} />
               <Route path='/charts' component={Charts} />
-              <Route path='/categories' component={Categories} />
+              <Route path='/categories' component={Categories} /
           </div>
       </div>
       </BrowserRouter>
