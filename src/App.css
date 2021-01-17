@@ -37,7 +37,7 @@ a {
 .navbar-wrapper div a:hover {
   border-bottom: 1px solid orange;
   padding-bottom: 4px;
-  /* color: orange; */
+   
 }
 .content {
   grid-area: content;
