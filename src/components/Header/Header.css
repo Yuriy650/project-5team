@@ -1,8 +1,9 @@
 .header {
-text-align: left;
+  text-align: left;
 }
 
 .header img {
-    height: 120px;
-    width: 140px;
+  align-self: center;
+  height: 120px;
+  width: 140px;
 }

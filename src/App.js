@@ -7,7 +7,7 @@ import AddNewIncome from "./components/Dialogs/AddNewIncome";
 
 function App() {
   return (
-  <div>
+  <div className="main-wrapper">
       <Navigation />
       <TabsContent />
       <AddNewCategory />
