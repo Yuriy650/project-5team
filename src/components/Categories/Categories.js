@@ -11,7 +11,7 @@ class Categories extends Component {
         return (
             <div>
                 Categories
-                Test
+               
             </div>
         )
     }
