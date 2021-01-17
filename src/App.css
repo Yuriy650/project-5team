@@ -1,24 +1,46 @@
 body {
+<<<<<<< HEAD
   background-color: orange;
   margin-left: 10px;
+=======
+  background-color: grey;
+}
+a {
+  text-decoration: none;
+>>>>>>> 8cef1d717b58c51841b1d29b72b3240f07f46edb
 }
 .app-wrapper {
-  height: 1200px;
-  display: grid;
-  grid-template-areas:
-"header header"
-"n content";
-  grid-auto-rows: 120px 1fr;
-  grid-template-columns: 1fr 10fr;
-  grid-gap: 10px
+  display: flex;
+  flex-direction: column;
+  width: 200px;
 }
 .header {
-  grid-area: header;
   background-color: darkgrey;
 }
+
 .navbar {
-  grid-area: n;
+  min-height: 100vh;
   background-color: darkgrey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbar-wrapper {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar-wrapper div a {
+  color: white;
+  font-size: 1.5em;
+  letter-spacing: 0.07em;
+  border: none;
+}
+.navbar-wrapper div a:hover {
+  border-bottom: 1px solid orange;
+  padding-bottom: 4px;
 }
 .content {
   grid-area: content;
@@ -41,5 +63,14 @@ body {
 .App-link {
   color: #61dafb;
 }
+.main-wrapper {
+  display: flex;
+}
+.tabs-wrapper {
+  align-self: center;
+  width: 100%;
+}
+.tabs-wrapper .appbar {
+  background-color: dimgray;
 
-
+}
