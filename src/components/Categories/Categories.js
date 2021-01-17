@@ -10,7 +10,12 @@ class Categories extends Component {
     render() {
         return (
             <div>
+
                 Categories gishpwfhwfwrtwgw
+=======
+                Categories
+                Test
+>>>>>>> 06b4792371f4bb2387201546a0731dcfb75c9396
             </div>
         )
     }
