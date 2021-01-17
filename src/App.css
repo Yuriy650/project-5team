@@ -1,5 +1,5 @@
 body {
-  background-color: orange;
+  background-color: grey;
 }
 a {
   text-decoration: none;
@@ -9,11 +9,7 @@ a {
   flex-direction: column;
   width: 200px;
 }
-/* .header {
- 
-  background-color: #282c34;
-  width: 100%;
-} */
+
 .navbar {
   min-height: 100vh;
   background-color: darkgrey;
@@ -37,7 +33,6 @@ a {
 .navbar-wrapper div a:hover {
   border-bottom: 1px solid orange;
   padding-bottom: 4px;
-  /* color: orange; */
 }
 .content {
   grid-area: content;
@@ -66,4 +61,8 @@ a {
 .tabs-wrapper {
   align-self: center;
   width: 100%;
+}
+.tabs-wrapper .appbar {
+  background-color: dimgray;
+
 }
