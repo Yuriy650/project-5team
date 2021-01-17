@@ -1,5 +1,6 @@
 body {
   background-color: orange;
+  margin-left: 10px;
 }
 .app-wrapper {
   height: 1200px;

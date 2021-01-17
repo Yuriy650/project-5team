@@ -10,7 +10,7 @@ class Categories extends Component {
     render() {
         return (
             <div>
-                Categories
+                Categories gishpwfhwfwrtwgw
             </div>
         )
     }
