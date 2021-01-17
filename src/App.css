@@ -2,7 +2,7 @@ body {
   background-color: orange;
 }
 .app-wrapper {
-  height: 1200px;
+  height: 400px;
   display: grid;
   grid-template-areas:
 "header header"
