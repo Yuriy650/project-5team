@@ -9,6 +9,9 @@ a {
   flex-direction: column;
   width: 200px;
 }
+.header {
+  background-color: darkgrey;
+}
 
 .navbar {
   min-height: 100vh;
