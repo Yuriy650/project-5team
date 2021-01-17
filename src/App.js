@@ -3,7 +3,7 @@ import Navigation from "./components/Navigation";
 import TabsContent from "./components/Tabs/TabsContent"
 function App() {
   return (
-  <div>
+  <div className="main-wrapper">
       <Navigation />
       <TabsContent />
   </div>
