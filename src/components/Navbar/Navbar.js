@@ -7,11 +7,9 @@ import {NavLink} from "react-router-dom";
 // import Charts from "../Charts/Charts";
 // import Categories from "../Categories/Categories";
 
-
-function Navbar(props) {
+function Navbar() {
     return (
         <nav className='navbar'>
-
             <div className='nav'><NavLink to="/home" >Home</NavLink></div>
             <div className='nav'><NavLink to="/charts">Charts</NavLink></div>
             <div className='nav'><NavLink to="/categories">Categories</NavLink></div>
@@ -20,8 +18,6 @@ function Navbar(props) {
             <div><NavLink to="/charts">Charts</NavLink></div>
             <div><NavLink to="/categories">Categories</NavLink></div>
             </div>
-           
-
         </nav>
     )
 }

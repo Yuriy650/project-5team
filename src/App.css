@@ -1,13 +1,12 @@
 body {
-<<<<<<< HEAD
+
   background-color: orange;
   margin-left: 10px;
-=======
-  background-color: grey;
+
 }
 a {
   text-decoration: none;
->>>>>>> 8cef1d717b58c51841b1d29b72b3240f07f46edb
+
 }
 .app-wrapper {
   display: flex;
