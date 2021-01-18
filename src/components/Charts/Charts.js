@@ -10,7 +10,7 @@ class Charts extends Component {
 render() {
         return (
             <div>
-                Charts
+                Charts srrtyreueyt
             </div>
         )
 }
