@@ -1,9 +1,10 @@
 import React from 'react';
 import '../../App.css';
-
 import {AppBar, Tabs, Tab } from '@material-ui/core';
 import Content from "./Content";
 import SecondContent from "./SecondContent";
+
+
 
 const SimpleTabs = () => {
   const[value, setValue] = React.useState(0);
@@ -13,10 +14,10 @@ const SimpleTabs = () => {
 }
   return(
       <div className="tabs-wrapper">
-        <div className="appbar"> 
-        <AppBar position="static" >
+        <div > 
+        <AppBar position="static"  style={{ background: '#2E3B55' }}>
           <Tabs value={value} onChange={handleTabs}>
-            <Tab label="Charges"/>
+            <Tab label="Charges"  />
             <Tab label="Incones"/>
           </Tabs>
         </AppBar>
@@ -27,6 +28,7 @@ const SimpleTabs = () => {
       </div>
   )
 }
+
 function TabPanel(props) {
   const {children, value, index } =props;
   return(
@@ -41,6 +43,5 @@ function TabPanel(props) {
 
   )
 }
-
-
 export default SimpleTabs;
+

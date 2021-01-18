@@ -1,12 +1,8 @@
 body {
-
-  background-color: orange;
-  margin-left: 10px;
-
+  background-color: dimgray;
 }
 a {
   text-decoration: none;
-
 }
 .app-wrapper {
   display: flex;
@@ -62,14 +58,22 @@ a {
 .App-link {
   color: #61dafb;
 }
-.main-wrapper {
+
+.main-page {
   display: flex;
 }
-.tabs-wrapper {
-  align-self: center;
+.main-btn {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
   width: 100%;
 }
-.tabs-wrapper .appbar {
-  background-color: dimgray;
-
+.bnt-add {
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.appbar {
+  color: black;
 }
