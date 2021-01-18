@@ -8,7 +8,19 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles({
+    root: {
+      background: 'linear-gradient(to top right, rgb(4, 4, 5), rgb(16, 14, 16), rgb(27, 25, 27), rgb(39, 35, 38), rgb(51, 45, 49), rgb(63, 55, 60), rgb(74, 66, 72), rgb(86, 76, 83), rgb(98, 86, 94), rgb(110, 96, 105), rgb(121, 107, 116), rgb(133, 117, 127));',
+      boxShadow: '-5px -5px 5px -5px rgba(34, 60, 80, 0.6) inset',
+      outline: "none",
+      border: "none",
+    },
+  });
 function AddNewIncome() {
+    const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -21,7 +33,7 @@ function AddNewIncome() {
 
     return (
         <div>
-            <Button variant="outlined" color="primary" onClick={handleClickOpen}>Add new income</Button>
+            <Button variant="outlined"  onClick={handleClickOpen} className={classes.root}>Add new income</Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">New income</DialogTitle>
 

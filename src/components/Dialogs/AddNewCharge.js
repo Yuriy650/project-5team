@@ -7,8 +7,19 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles({
+    root: {
+      background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+      boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    },
+  });
+
 
 function AddNewCharge() {
+    const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -21,7 +32,7 @@ function AddNewCharge() {
 
     return (
         <div>
-            <Button variant="outlined" color="primary" onClick={handleClickOpen}>Add new charge</Button>
+            <Button variant="outlined"  onClick={handleClickOpen} className={classes.root}>Add new charge</Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">New charge</DialogTitle>
 
