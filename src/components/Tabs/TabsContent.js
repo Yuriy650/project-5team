@@ -18,7 +18,7 @@ const SimpleTabs = () => {
 
       <div className="tabs-wrapper">
         <div > 
-        <AppBar position="static"  style={{ background: '#2E3B55' }}>
+        <AppBar position="static"  style={{ background: '#848482' }}>
           <Tabs value={value} onChange={handleTabs}>
             <Tab label="Charges"  />
             <Tab label="Incones"/>
