@@ -1,8 +1,10 @@
 import React from 'react';
 import '../../App.css';
 import {AppBar, Tabs, Tab } from '@material-ui/core';
-import Content from "./Content";
+import Charges from "./Charges";
 import SecondContent from "./SecondContent";
+import Categories from "../Categories/Categories";
+import {BrowserRouter, Route} from "react-router-dom";
 
 
 
@@ -15,7 +17,7 @@ const SimpleTabs = () => {
   setValue(val);
 }
   return(
-
+<BrowserRouter>
       <div className="tabs-wrapper">
         <div > 
         <AppBar position="static"  style={{ background: '#848482' }}>
@@ -25,11 +27,11 @@ const SimpleTabs = () => {
           </Tabs>
         </AppBar>
         </div>
-        <TabPanel value={value} index={0}> <Content/> </TabPanel>
+        <TabPanel value={value} index={0}> <Charges/> </TabPanel>
         <TabPanel value={value} index={1}> <SecondContent/> </TabPanel>
-       
+          <Route path='/categories' component={Categories}/>
       </div>
-
+</BrowserRouter>
 
   )
 }

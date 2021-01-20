@@ -26,7 +26,7 @@ function App() {
     <TabsContent />
 
     </div>
-    <Route path='/categories' component={Categories}/>
+
   </div>
 
   </div>

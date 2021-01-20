@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 
 
 
-class Categories extends Component {
+class Charges extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -21,7 +21,7 @@ class Categories extends Component {
     render() {
         return (
             <div>
-                <h1>Categories</h1>
+                <h1>Charges</h1>
                 <table>
                     <thead>
                     <ProductHeadRow />
@@ -45,7 +45,7 @@ class ProductHeadRow extends React.Component {
                 <th>Category</th>
                 <th>Description</th>
                 <th>Date</th>
-
+                <th>Money</th>
             </tr>
 
         )
@@ -59,6 +59,7 @@ class ProductRow extends React.Component {
                 <td>{this.props.category}</td>
                 <td>{this.props.description}</td>
                 <td>{this.props.date}</td>
+                <td>{this.props.money}</td>
 
             </tr>
         )
@@ -67,4 +68,4 @@ class ProductRow extends React.Component {
 }
 
 
-export default Categories;
+export default Charges;
