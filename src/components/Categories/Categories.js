@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {BrowserRouter, Route} from "react-router-dom";
 
 class Categories extends Component {
     constructor(props) {
@@ -7,10 +8,12 @@ class Categories extends Component {
     }
     render() {
         return (
+            <BrowserRouter>
             <div>
-                Categories
-                Test
+                <h1>Categories</h1>
             </div>
+
+            </BrowserRouter>
         )
     }
 

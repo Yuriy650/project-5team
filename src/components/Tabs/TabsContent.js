@@ -6,6 +6,8 @@ import SecondContent from "./SecondContent";
 
 
 
+
+
 const SimpleTabs = () => {
   const[value, setValue] = React.useState(0);
 
@@ -13,6 +15,7 @@ const SimpleTabs = () => {
   setValue(val);
 }
   return(
+
       <div className="tabs-wrapper">
         <div > 
         <AppBar position="static"  style={{ background: '#2E3B55' }}>
@@ -26,6 +29,8 @@ const SimpleTabs = () => {
         <TabPanel value={value} index={1}> <SecondContent/> </TabPanel>
        
       </div>
+
+
   )
 }
 
