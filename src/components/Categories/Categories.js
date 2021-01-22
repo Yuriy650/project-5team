@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-
-
-
-
+import Table from "@material-ui/core/Table";
+import TableHead from "@material-ui/core/TableHead";
+import {TableBody} from "@material-ui/core";
 
 class Categories extends Component {
     constructor(props) {
@@ -22,17 +21,17 @@ class Categories extends Component {
         return (
             <div>
                 <h1>Categories</h1>
-                <table>
-                    <thead>
+                <Table>
+                    <TableHead >
                     <ProductHeadRow />
-                    </thead>
-                    <tbody>
+                    </TableHead>
+                    <TableBody>
                     {this.state.products.map(item => {
                         return <ProductRow category={item.category} description={item.description}
                                            date={item.date} money={item.money}/>
                     })}
-                    </tbody>
-                </table>
+                    </TableBody>
+                </Table>
             </div>
         )
     }
@@ -45,7 +44,6 @@ class ProductHeadRow extends React.Component {
                 <th>Category</th>
                 <th>Description</th>
                 <th>Date</th>
-
             </tr>
 
         )
@@ -56,15 +54,14 @@ class ProductRow extends React.Component {
     render() {
         return (
             <tr>
-                <td>{this.props.category}</td>
-                <td>{this.props.description}</td>
-                <td>{this.props.date}</td>
+                <td align={"center"} height={50} width={150}>{this.props.category}</td>
+                <td align={"center"} height={50} width={150}>{this.props.description}</td>
+                <td align={"center"} height={50} width={150}>{this.props.date}</td>
 
             </tr>
         )
     }
 
 }
-
 
 export default Categories;
