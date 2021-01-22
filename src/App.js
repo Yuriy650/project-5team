@@ -20,21 +20,26 @@ class App extends Component {
             ]
 
         }
+
         this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount() {
-       this.handleChange();
+        this.handleChange();
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
     }
 
     handleChange() {
-        let newRow = JSON.parse(localStorage.getItem("newRow"));
-        let _products = this.state.products;
-        _products.push(newRow);
-        this.setState({products: _products});
+        for(let i=0; i<localStorage.length; i++){
+            let newRow = JSON.parse(localStorage.getItem(`${localStorage.key(i)}`));
+            let _products = this.state.products;
+            _products.push(newRow);
+            this.setState({products: _products});
+        }
+
+
     }
 
     render() {
@@ -49,29 +54,21 @@ class App extends Component {
                         <div className="bnt-add">
                             <AddNewCategory/>
                             <AddNewCharge
-
-
+                                products={this.state.products}
+                                onhandleChange={this.state.handleChange}
                             />
                             <AddNewIncome/>
                         </div>
-
                         <div className="bnt-tabs">
                             <TabsContent
                                 products={this.state.products}
                                 handleChange={this.handleChange}/>
-
-
                         </div>
-
                     </div>
-
                 </div>
             </BrowserRouter>
-
         )
     }
-
-
 }
 
 export default App;

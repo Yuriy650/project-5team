@@ -22,7 +22,7 @@ const useStyles = makeStyles({
 });
 
 
-function AddNewCharge(props) {
+function AddNewCharge() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
@@ -34,20 +34,21 @@ function AddNewCharge(props) {
     const handleClose = () => {
         setOpen(false);
     };
-let row = {};
-let storageArray = [];
+    let row = {};
 
-const handleChange = (e) => {
-    row[e.target.id] = e.target.value;
-    localStorage.setItem('newRow', JSON.stringify(row) )
+    const handleChange = (e) => {
+        let key=`${e.target.id}`;
+        row[e.target.id] = e.target.value;
+        localStorage.setItem(`${key}`, JSON.stringify(row));
 
-}
+    }
+
+
     return (
         <div>
             <Button variant="outlined" onClick={handleClickOpen} className={classes.root}>Add new charge</Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">New charge</DialogTitle>
-
                 <DialogContent onChange={handleChange}>
                     <TextField
                         autoFocus
@@ -56,7 +57,6 @@ const handleChange = (e) => {
                         label="Total"
                         type="text"
                         fullWidth
-
                     />
                     <TextField
                         autoFocus
@@ -65,12 +65,10 @@ const handleChange = (e) => {
                         label="Description"
                         type="text"
                         fullWidth
-
                     />
-
                     <InputLabel id="demo-controlled-open-select-label">Select category</InputLabel>
                     <Select native onChange={handleClickOpen} id='category' labelId="demo-controlled-open-select-label">
-                        <option aria-label="None"  value=""/>
+                        <option aria-label="None" value=""/>
                         <option id='food' value='food'>Food</option>
                         <option id='clothes' value='clothes'>Clothes</option>
                         <option id='pets' value='pets'>Pets</option>
@@ -78,22 +76,17 @@ const handleChange = (e) => {
                         <option id='fuel' value='fuel'>Fuel</option>
                         <option id='utility bills' value='utility bills'>Utility Bills</option>
                     </Select>
-
                     <InputLabel id="test">Date</InputLabel>
                     <TextField
                         labelId="test"
                         id="date"
                         type="date"
-
                     />
-
                 </DialogContent>
-
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">Cancel</Button>
-                    <Button onClick={handleClose}  color="primary">Add new charge</Button>
+                    <Button onClick={handleClose} color="primary">Add new charge</Button>
                 </DialogActions>
-
             </Dialog>
         </div>
     );
