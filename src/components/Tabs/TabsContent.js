@@ -26,7 +26,12 @@ const SimpleTabs = (props) => {
                         </Tabs>
                     </AppBar>
                 </div>
-                <TabPanel value={value} index={0}> <Charges products={props.products}/> </TabPanel>
+                <TabPanel value={value} index={0}>
+                    <Charges
+                        products={props.products}
+                        handleChange={props.handleChange}
+                    />
+                </TabPanel>
                 <TabPanel value={value} index={1}> <SecondContent/> </TabPanel>
                 <div>
                     <Route path='/home' component={Home}/>

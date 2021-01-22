@@ -14,14 +14,13 @@ class Charges extends Component {
     }))
 
     render() {
-
         const classes = this.props;
         return (
             <div>
                 <h1>Charges</h1>
-                <TableContainer>
+                <TableContainer component={Paper}>
                     <Table className={classes.table}>
-                        <TableHead >
+                        <TableHead>
                             <ProductHeadRow/>
                         </TableHead>
                         <TableBody>
@@ -52,7 +51,9 @@ class ProductHeadRow extends React.Component {
 }
 
 class ProductRow extends React.Component {
+
     render() {
+
         return (
             <tr>
                 <td align={"center"} height={50} width={150}>{this.props.category}</td>

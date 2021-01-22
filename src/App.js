@@ -6,10 +6,6 @@ import AddNewCategory from "./components/Dialogs/AddNewCategory";
 import AddNewCharge from "./components/Dialogs/AddNewCharge";
 import AddNewIncome from "./components/Dialogs/AddNewIncome";
 import {BrowserRouter} from "react-router-dom";
-/*import Categories from "./components/Categories/Categories";
-import Home from "./components/Home/Home";
-import Charts from "./components/Charts/Charts";
-import Charges from "./components/Tabs/Charges";*/
 
 class App extends Component {
     constructor(props) {
@@ -24,41 +20,25 @@ class App extends Component {
             ]
 
         }
-        //this.handleProductsChange = this.handleProductsChange.bind(this);
-        this.handleCategoryOnClick = this.handleCategoryOnClick.bind(this);
-        this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
-        this.handleDateChange = this.handleDateChange.bind(this);
-        this.handleMoneyChange = this.handleMoneyChange.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
-    handleCategoryOnClick(e) {
-       this.setState({products: this.state.products.push(e)});
+    componentDidMount() {
+       this.handleChange();
     }
 
-    handleDescriptionChange(e) {
-        return e;
+    componentDidUpdate(prevProps, prevState, snapshot) {
     }
 
-    handleDateChange(e) {
-        return  e;
+    handleChange() {
+        let newRow = JSON.parse(localStorage.getItem("newRow"));
+        let _products = this.state.products;
+        _products.push(newRow);
+        this.setState({products: _products});
     }
-
-    handleMoneyChange(e) {
-        return  e;
-    }
-
-
-    /*handleProductsChange(e) {
-        this.setState({
-            products: [...this.state.products, this.state.products.push({category: this.handleCategoryOnClick(e),
-            description: this.handleDescriptionChange(e),
-            date: this.handleDateChange(e),
-            money: this.handleMoneyChange(e)})]
-
-        });
-    }*/
 
     render() {
+
         return (
             <BrowserRouter>
                 <div className="main-page">
@@ -69,16 +49,16 @@ class App extends Component {
                         <div className="bnt-add">
                             <AddNewCategory/>
                             <AddNewCharge
-                                onCategoryOnClick={this.handleCategoryOnClick}
-                                onDescriptionChange={this.handleDescriptionChange}
-                                onDateChange={this.handleDateChange}
-                                onMoneyChange={this.handleMoneyChange}
+
+
                             />
                             <AddNewIncome/>
                         </div>
 
                         <div className="bnt-tabs">
-                            <TabsContent products={this.state.products}/>
+                            <TabsContent
+                                products={this.state.products}
+                                handleChange={this.handleChange}/>
 
 
                         </div>

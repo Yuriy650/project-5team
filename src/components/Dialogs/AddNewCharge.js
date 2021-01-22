@@ -34,78 +34,29 @@ function AddNewCharge(props) {
     const handleClose = () => {
         setOpen(false);
     };
+let row = {};
+let storageArray = [];
 
-    /*let newRow = {
-        category: '',
-        description: '',
-        date: '',
-        money: '',
-        handleCategoryOnClick(e) {
-            this.category = e.target.value
+const handleChange = (e) => {
+    row[e.target.id] = e.target.value;
+    localStorage.setItem('newRow', JSON.stringify(row) )
 
-        },
-        handleDescriptionOnChange(e) {
-            this.description = e.target.value
-        },
-        handleDateOnChange(e) {
-            this.date = e.target.value
-        },
-        handleMoneyOnChange(e) {
-            this.money = e.target.value
-        }
-    }
-
-    this.handleCategoryOnClick = this.handleCategoryOnClick.bind(this);
-    this.handleDescriptionOnChange = this.handleDescriptionOnChange.bind(this);
-    this.handleDateOnChange = this.handleDateOnChange.bind(this);
-    this.handleMoneyOnChange = this.handleMoneyOnChange.bind(this);
-*/
-    const row = {
-
-
-    };
-    const handleMoneyOnChange = (e) => {
-
-       row.money = e.target.value;
-       props.onMoneyChange(row.money);
-      // console.log(props.onMoneyChange(row.money));
-
-    }
-    const handleDescriptionOnChange = (e) => {
-
-        row.description = e.target.value;
-        props.onDescriptionChange(row.description);
-       // console.log(props.onDescriptionChange(row.description))
-    }
-   const handleCategoryOnClick = (e) => {
-
-        row.category = e.target.value;
-        props.onCategoryOnClick(row.category);
-
-    }
-    const handleDateOnChange = (e) => {
-        row.date = e.target.value;
-        props.onDateChange(row.date);
-        console.log(row);
-
-
-    }
-
+}
     return (
         <div>
             <Button variant="outlined" onClick={handleClickOpen} className={classes.root}>Add new charge</Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">New charge</DialogTitle>
 
-                <DialogContent>
+                <DialogContent onChange={handleChange}>
                     <TextField
                         autoFocus
                         margin="dense"
-                        id="total"
+                        id="money"
                         label="Total"
                         type="text"
                         fullWidth
-                        onChange={()=>handleMoneyOnChange}
+
                     />
                     <TextField
                         autoFocus
@@ -114,19 +65,18 @@ function AddNewCharge(props) {
                         label="Description"
                         type="text"
                         fullWidth
-                        onChange={()=>handleDescriptionOnChange}
+
                     />
 
-
                     <InputLabel id="demo-controlled-open-select-label">Select category</InputLabel>
-                    <Select native onChange={handleClickOpen} onClick={()=>handleCategoryOnClick} labelId="demo-controlled-open-select-label">
-                        <option aria-label="None" value=""/>
-                        <option value='food'>Food</option>
-                        <option value='clothes'>Clothes</option>
-                        <option value='pets'>Pets</option>
-                        <option value='restaurants'>Restaurants</option>
-                        <option value='fuel'>Fuel</option>
-                        <option value='utility bills'>Utility Bills</option>
+                    <Select native onChange={handleClickOpen} id='category' labelId="demo-controlled-open-select-label">
+                        <option aria-label="None"  value=""/>
+                        <option id='food' value='food'>Food</option>
+                        <option id='clothes' value='clothes'>Clothes</option>
+                        <option id='pets' value='pets'>Pets</option>
+                        <option id='restaurants' value='restaurants'>Restaurants</option>
+                        <option id='fuel' value='fuel'>Fuel</option>
+                        <option id='utility bills' value='utility bills'>Utility Bills</option>
                     </Select>
 
                     <InputLabel id="test">Date</InputLabel>
@@ -134,14 +84,14 @@ function AddNewCharge(props) {
                         labelId="test"
                         id="date"
                         type="date"
-                        onChange={() => handleDateOnChange}
+
                     />
 
                 </DialogContent>
 
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">Cancel</Button>
-                    <Button onClick={handleClose} color="primary">Add new charge</Button>
+                    <Button onClick={handleClose}  color="primary">Add new charge</Button>
                 </DialogActions>
 
             </Dialog>
