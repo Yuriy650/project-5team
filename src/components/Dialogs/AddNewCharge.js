@@ -7,7 +7,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 
 
 const useStyles = makeStyles({
@@ -19,7 +19,7 @@ const useStyles = makeStyles({
         color: "#fff",
         textShadow: "0 1px 0 #2f2f2f"
     },
-  });
+});
 
 
 function AddNewCharge() {
@@ -30,21 +30,30 @@ function AddNewCharge() {
         setOpen(true);
     };
 
+
     const handleClose = () => {
         setOpen(false);
     };
+    let row = {};
+
+    const handleChange = (e) => {
+        let key=`${e.target.id}`;
+        row[e.target.id] = e.target.value;
+        localStorage.setItem(`${key}`, JSON.stringify(row));
+
+    }
+
 
     return (
         <div>
-            <Button variant="outlined"  onClick={handleClickOpen} className={classes.root}>Add new charge</Button>
+            <Button variant="outlined" onClick={handleClickOpen} className={classes.root}>Add new charge</Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">New charge</DialogTitle>
-
-                <DialogContent>
+                <DialogContent onChange={handleChange}>
                     <TextField
                         autoFocus
                         margin="dense"
-                        id="total"
+                        id="money"
                         label="Total"
                         type="text"
                         fullWidth
@@ -57,31 +66,27 @@ function AddNewCharge() {
                         type="text"
                         fullWidth
                     />
-
-
                     <InputLabel id="demo-controlled-open-select-label">Select category</InputLabel>
-                    <Select native onChange={handleClickOpen} labelId="demo-controlled-open-select-label">
-                        <option aria-label="None" value="" />
-                        <option>Food</option>
-                        <option>Clothes</option>
-                        <option>Pets</option>
-                        <option>Restaurants</option>
+                    <Select native onChange={handleClickOpen} id='category' labelId="demo-controlled-open-select-label">
+                        <option aria-label="None" value=""/>
+                        <option id='food' value='food'>Food</option>
+                        <option id='clothes' value='clothes'>Clothes</option>
+                        <option id='pets' value='pets'>Pets</option>
+                        <option id='restaurants' value='restaurants'>Restaurants</option>
+                        <option id='fuel' value='fuel'>Fuel</option>
+                        <option id='utility bills' value='utility bills'>Utility Bills</option>
                     </Select>
-
                     <InputLabel id="test">Date</InputLabel>
                     <TextField
                         labelId="test"
                         id="date"
                         type="date"
                     />
-
                 </DialogContent>
-
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">Cancel</Button>
                     <Button onClick={handleClose} color="primary">Add new charge</Button>
                 </DialogActions>
-
             </Dialog>
         </div>
     );
