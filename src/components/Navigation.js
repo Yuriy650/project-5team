@@ -9,17 +9,15 @@ import {BrowserRouter, Route} from "react-router-dom";
 
 const Navigation = () => {
     return (
-        <BrowserRouter>
         <div className="app-wrapper">
-            <Header />
-            <Navbar />
+            <Header/>
+            <Navbar/>
             <div className="content">
-                <Route path='/home' component={Home} />
-                <Route path='/charts' component={Charts} />
-                <Route path='/categories' component={Categories} />
+                {/*<Route path='/home' component={Home} />
+                <Route path='/charts' component={Charts} />*/}
+                {/*<Route path='/categories' component={Categories} />*/}
             </div>
         </div>
-        </BrowserRouter>
     );
 }
 export default Navigation;

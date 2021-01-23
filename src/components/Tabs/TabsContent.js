@@ -1,47 +1,64 @@
 import React from 'react';
 import '../../App.css';
-import {AppBar, Tabs, Tab } from '@material-ui/core';
-import Content from "./Content";
+import {AppBar, Tabs, Tab} from '@material-ui/core';
+import Charges from "./Charges";
 import SecondContent from "./SecondContent";
+import Categories from "../Categories/Categories";
+import {BrowserRouter, Route} from "react-router-dom";
+import Home from "../Home/Home";
+import Charts from "../Charts/Charts";
 
 
+const SimpleTabs = (props) => {
+    const [value, setValue] = React.useState(0);
 
-const SimpleTabs = () => {
-  const[value, setValue] = React.useState(0);
+    const handleTabs = (e, val) => {
+        setValue(val);
+    }
+    return (
+        <BrowserRouter>
+            <div className="tabs-wrapper">
+                <div>
+                    <AppBar position="static" style={{background: '#848482'}}>
+                        <Tabs value={value} onChange={handleTabs}>
+                            <Tab label="Charges"/>
+                            <Tab label="Incomes"/>
+                        </Tabs>
+                    </AppBar>
+                </div>
+                <TabPanel value={value} index={0}>
+                    <Charges
+                        products={props.products}
+                        handleChange={props.handleChange}
+                    />
+                </TabPanel>
+                <TabPanel value={value} index={1}> <SecondContent/> </TabPanel>
+                <div>
+                    <Route path='/home' component={Home}/>
+                    <Route path='/charts' component={Charts}/>
+                    <Route path='/categories' component={Categories}/>
+                </div>
+            </div>
 
-  const handleTabs = (e, val) => {
-  setValue(val);
-}
-  return(
-      <div className="tabs-wrapper">
-        <div > 
-        <AppBar position="static"  style={{ background: '#848482' }}>
-          <Tabs value={value} onChange={handleTabs}>
-            <Tab label="Charges"  />
-            <Tab label="Incones"/>
-          </Tabs>
-        </AppBar>
-        </div>
-        <TabPanel value={value} index={0}> <Content/> </TabPanel>
-        <TabPanel value={value} index={1}> <SecondContent/> </TabPanel>
-       
-      </div>
-  )
+        </BrowserRouter>
+
+    )
 }
 
 function TabPanel(props) {
-  const {children, value, index } =props;
-  return(
-    <div>
-      {
-      value===index&&(
-        <div>{children}</div>
-      )
+    const {children, value, index} = props;
+    return (
+        <div>
+            {
+                value === index && (
+                    <div>{children}</div>
+                )
 
-      }
-    </div>
+            }
+        </div>
 
-  )
+    )
 }
+
 export default SimpleTabs;
 
