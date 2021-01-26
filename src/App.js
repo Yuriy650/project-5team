@@ -23,25 +23,19 @@ class App extends Component {
 
         this.handleChange = this.handleChange.bind(this);
     }
-
     componentDidMount() {
         this.handleChange();
     }
-
-    componentDidUpdate(prevProps, prevState, snapshot) {
-    }
-
     handleChange() {
         for(let i=0; i<localStorage.length; i++){
             let newRow = JSON.parse(localStorage.getItem(`${localStorage.key(i)}`));
             let _products = this.state.products;
-            _products.push(newRow);
-            this.setState({products: _products});
+            if(newRow){
+                _products.push(newRow);
+                this.setState({products: _products});
+            }
         }
-
-
     }
-
     render() {
 
         return (
@@ -55,7 +49,7 @@ class App extends Component {
                             <AddNewCategory/>
                             <AddNewCharge
                                 products={this.state.products}
-                                onhandleChange={this.state.handleChange}
+                                handleOnSubmit={this.handleChange}
                             />
                             <AddNewIncome/>
                         </div>

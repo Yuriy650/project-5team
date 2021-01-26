@@ -22,7 +22,7 @@ const useStyles = makeStyles({
 });
 
 
-function AddNewCharge() {
+function AddNewCharge(props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
@@ -30,26 +30,30 @@ function AddNewCharge() {
         setOpen(true);
     };
 
-
     const handleClose = () => {
         setOpen(false);
     };
-    let row = {};
 
-    const handleChange = (e) => {
-        let key=`${e.target.id}`;
-        row[e.target.id] = e.target.value;
-        localStorage.setItem(`${key}`, JSON.stringify(row));
 
+    const handleOnSubmit = (e) => {
+        e.preventDefault();
+        const newRow = {
+            id: Math.floor(Math.random()*100),
+            category: e.target[2].value,
+            description: e.target[1].value,
+            date: e.target[3].value,
+            money: e.target[0].value
+        };
+        localStorage.setItem(`${newRow.id}`, JSON.stringify(newRow));
+        props.handleOnSubmit();
     }
-
-
     return (
         <div>
             <Button variant="outlined" onClick={handleClickOpen} className={classes.root}>Add new charge</Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">New charge</DialogTitle>
-                <DialogContent onChange={handleChange}>
+                <form onSubmit={handleOnSubmit}>
+                <DialogContent >
                     <TextField
                         autoFocus
                         margin="dense"
@@ -67,7 +71,7 @@ function AddNewCharge() {
                         fullWidth
                     />
                     <InputLabel id="demo-controlled-open-select-label">Select category</InputLabel>
-                    <Select native onChange={handleClickOpen} id='category' labelId="demo-controlled-open-select-label">
+                    <Select native id='category' labelId="demo-controlled-open-select-label">
                         <option aria-label="None" value=""/>
                         <option id='food' value='food'>Food</option>
                         <option id='clothes' value='clothes'>Clothes</option>
@@ -85,8 +89,9 @@ function AddNewCharge() {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">Cancel</Button>
-                    <Button onClick={handleClose} color="primary">Add new charge</Button>
+                    <Button onClick={handleClose} type='submit' color="primary">Add new charge</Button>
                 </DialogActions>
+                </form>
             </Dialog>
         </div>
     );
