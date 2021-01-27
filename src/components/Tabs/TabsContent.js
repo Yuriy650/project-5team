@@ -2,11 +2,11 @@ import React from 'react';
 import '../../App.css';
 import {AppBar, Tabs, Tab} from '@material-ui/core';
 import Charges from "./Charges";
-import SecondContent from "./SecondContent";
 import Categories from "../Categories/Categories";
 import {BrowserRouter, Route} from "react-router-dom";
 import Home from "../Home/Home";
 import Charts from "../Charts/Charts";
+import Incomes from "./Incomes";
 
 
 const SimpleTabs = (props) => {
@@ -32,7 +32,10 @@ const SimpleTabs = (props) => {
                         handleChange={props.handleChange}
                     />
                 </TabPanel>
-                <TabPanel value={value} index={1}> <SecondContent/> </TabPanel>
+                <TabPanel value={value} index={1}>
+                    <Incomes
+                        incomes={props.incomes}/>
+                </TabPanel>
                 <div>
                     <Route path='/home' component={Home}/>
                     <Route path='/charts' component={Charts}/>

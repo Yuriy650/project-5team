@@ -21,7 +21,7 @@ const useStyles = makeStyles({
         textShadow: "0 1px 0 #2f2f2f"
     },
   });
-function AddNewIncome() {
+function AddNewIncome(props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
@@ -33,12 +33,25 @@ function AddNewIncome() {
         setOpen(false);
     };
 
+    const handleOnSubmit = (e) => {
+        e.preventDefault();
+        const newRow = {
+            id: Math.floor(Math.random()*1000),
+            category: e.target[2].value,
+            description: e.target[1].value,
+            date: e.target[3].value,
+            total: e.target[0].value
+        };
+        localStorage.setItem(`${newRow.id}`, JSON.stringify(newRow));
+        props.handleIncomeOnSubmit();
+    }
+
     return (
         <div>
             <Button variant="outlined"  onClick={handleClickOpen} className={classes.root}>Add new income</Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">New income</DialogTitle>
-
+<form onSubmit={handleOnSubmit}>
                 <DialogContent>
                     <TextField
                         autoFocus
@@ -61,10 +74,12 @@ function AddNewIncome() {
                     <InputLabel id="demo-controlled-open-select-label">Select category</InputLabel>
                     <Select native onChange={handleClickOpen} labelId="demo-controlled-open-select-label">
                         <option aria-label="None" value="" />
-                        <option>Food</option>
-                        <option>Clothes</option>
-                        <option>Pets</option>
-                        <option>Restaurants</option>
+                        <option>Salary</option>
+                        <option>Bonuses</option>
+                        <option>Deposits</option>
+                        <option>Profits</option>
+                        <option>Rent</option>
+                        <option>Sale of property</option>
                     </Select>
 
                     <InputLabel id="test">Date</InputLabel>
@@ -78,9 +93,9 @@ function AddNewIncome() {
 
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">Cancel</Button>
-                    <Button onClick={handleClose} color="primary">Add new income</Button>
+                    <Button onClick={handleClose} type='submit' color="primary">Add new income</Button>
                 </DialogActions>
-
+</form>
             </Dialog>
         </div>
     );

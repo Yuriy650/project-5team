@@ -73,12 +73,12 @@ function AddNewCharge(props) {
                     <InputLabel id="demo-controlled-open-select-label">Select category</InputLabel>
                     <Select native id='category' labelId="demo-controlled-open-select-label">
                         <option aria-label="None" value=""/>
-                        <option id='food' value='food'>Food</option>
-                        <option id='clothes' value='clothes'>Clothes</option>
-                        <option id='pets' value='pets'>Pets</option>
-                        <option id='restaurants' value='restaurants'>Restaurants</option>
-                        <option id='fuel' value='fuel'>Fuel</option>
-                        <option id='utility bills' value='utility bills'>Utility Bills</option>
+                        <option id='Food' value='food'>Food</option>
+                        <option id='Clothes' value='clothes'>Clothes</option>
+                        <option id='Pets' value='pets'>Pets</option>
+                        <option id='Restaurants' value='restaurants'>Restaurants</option>
+                        <option id='Fuel' value='fuel'>Fuel</option>
+                        <option id='Utility bills' value='utility bills'>Utility Bills</option>
                     </Select>
                     <InputLabel id="test">Date</InputLabel>
                     <TextField
