@@ -3,17 +3,22 @@ import Table from "@material-ui/core/Table";
 import {Paper, TableBody, TableContainer, TableHead} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core";
 
+import "./changes.css"
+
+
 class Charges extends Component {
     useStyles = makeStyles(theme => ({
         table: {
             minWidth: 350,
         },
-    }))
+    }));
+  
+
     render() {
         const classes = this.props;
         return (
             <div>
-                <h1>Charges</h1>
+                <h2 className ="title">Charges</h2>
                 <TableContainer component={Paper}>
                     <Table className={classes.table}>
                         <TableHead>

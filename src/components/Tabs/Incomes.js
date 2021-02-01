@@ -1,6 +1,9 @@
 import React, {Component} from "react";
 import {makeStyles, Paper, TableBody, TableContainer, TableHead} from "@material-ui/core";
 import Table from "@material-ui/core/Table";
+import "./changes.css"
+
+
 
 class Incomes extends Component {
     useStyles = makeStyles(theme => ({
@@ -12,7 +15,7 @@ class Incomes extends Component {
         const classes = this.props;
         return (
             <div>
-                <h1>Incomes</h1>
+                <h2 className ="title">Incomes</h2>
                 <TableContainer component={Paper}>
                     <Table className={classes.table}>
                         <TableHead>

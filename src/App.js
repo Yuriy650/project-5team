@@ -67,7 +67,7 @@ class App extends Component {
             console.log(newRow);
             let _products = this.state.products;
             let _incomes = this.state.incomes;
-            if (this.state.chargesCategories.includes(newRow.category.toLowerCase())) {
+            if (this.state.chargesCategories.includes(newRow.category)) {
                 _products.push(newRow);
                 this.setState({products: _products});
             } else if (this.state.incomesCategories.includes(newRow.category) && newRow) {

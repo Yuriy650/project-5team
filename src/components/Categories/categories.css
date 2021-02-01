@@ -1,0 +1,45 @@
+tr {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  font-size: 14px;
+  width: 640px;
+  text-align: left;
+  border-collapse: collapse;
+  background: linear-gradient(
+    to bottom,
+    rgb(179, 179, 179),
+    rgb(163, 163, 163),
+    rgb(146, 146, 146),
+    rgb(130, 130, 130),
+    rgb(113, 113, 113),
+    rgb(97, 97, 97),
+    rgb(98, 98, 98),
+    rgb(100, 100, 100),
+    rgb(101, 101, 101),
+    rgb(102, 102, 102),
+    rgb(104, 104, 104),
+    rgb(105, 105, 105)
+  );
+  margin: 10px;
+}
+tr th {
+  color: #edb749;
+  border-bottom: 1px solid #9896a4;
+}
+tr td {
+  color: #dfcfbe;
+  border-right: 1px solid#9896A4;
+  border-bottom: 1px solid #9896a4;
+}
+tr td:last-child {
+  border-right: none;
+}
+tr:hover td {
+  text-decoration: underline;
+}
+
+.MuiGrid-root {
+  text-align: center;
+}
+svg {
+  padding-right: 5px;
+}
