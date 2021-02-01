@@ -25,7 +25,6 @@ const SimpleTabs = (props) => {
                             <Tab label="Incomes"/>
                         </Tabs>
                         <div>
-                            <Route path='/' component={Charges}/>
                             <Route path='/home' component={Home}/>
                             <Route path='/charts' component={Charts}/>
                             <Route path='/categories' component={Categories}/>
