@@ -23,14 +23,12 @@ class App extends Component {
 
         this.handleChange = this.handleChange.bind(this);
     }
-
     componentDidMount() {
         this.handleChange();
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
     }
-
     handleChange() {
         for(let i=0; i<localStorage.length; i++){
             let newRow = JSON.parse(localStorage.getItem(`${localStorage.key(i)}`));
@@ -41,7 +39,6 @@ class App extends Component {
 
 
     }
-
     render() {
 
         return (
