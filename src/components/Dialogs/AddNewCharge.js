@@ -21,8 +21,7 @@ const useStyles = makeStyles({
     },
 });
 
-
-function AddNewCharge(props) {
+    function AddNewCharge(props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
@@ -47,6 +46,7 @@ function AddNewCharge(props) {
         localStorage.setItem(`${newRow.id}`, JSON.stringify(newRow));
         props.handleOnSubmit();
     }
+
     return (
         <div>
             <Button variant="outlined" onClick={handleClickOpen} className={classes.root}>Add new charge</Button>
@@ -57,6 +57,7 @@ function AddNewCharge(props) {
                     <TextField
                         autoFocus
                         margin="dense"
+                        placeholder="only number"
                         id="money"
                         label="Total"
                         type="text"
@@ -73,12 +74,12 @@ function AddNewCharge(props) {
                     <InputLabel id="demo-controlled-open-select-label">Select category</InputLabel>
                     <Select native id='category' labelId="demo-controlled-open-select-label">
                         <option aria-label="None" value=""/>
-                        <option id='Food' value='food'>Food</option>
-                        <option id='Clothes' value='clothes'>Clothes</option>
-                        <option id='Pets' value='pets'>Pets</option>
-                        <option id='Restaurants' value='restaurants'>Restaurants</option>
-                        <option id='Fuel' value='fuel'>Fuel</option>
-                        <option id='Utility bills' value='utility bills'>Utility Bills</option>
+                        <option id='Food' value='Food'>Food</option>
+                        <option id='Clothes' value='Clothes'>Clothes</option>
+                        <option id='Pets' value='Pets'>Pets</option>
+                        <option id='Restaurants' value='Restaurants'>Restaurants</option>
+                        <option id='Fuel' value='Fuel'>Fuel</option>
+                        <option id='Utility bills' value='Utility bills'>Utility Bills</option>
                     </Select>
                     <InputLabel id="test">Date</InputLabel>
                     <TextField

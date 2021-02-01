@@ -57,6 +57,7 @@ function AddNewIncome(props) {
                         autoFocus
                         margin="dense"
                         id="total"
+                        placeholder="only number"
                         label="Total"
                         type="text"
                         fullWidth

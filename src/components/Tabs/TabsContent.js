@@ -3,7 +3,7 @@ import '../../App.css';
 import {AppBar, Tabs, Tab} from '@material-ui/core';
 import Charges from "./Charges";
 import Categories from "../Categories/Categories";
-import {BrowserRouter, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
 import Home from "../Home/Home";
 import Charts from "../Charts/Charts";
 import Incomes from "./Incomes";
@@ -16,7 +16,7 @@ const SimpleTabs = (props) => {
         setValue(val);
     }
     return (
-        <BrowserRouter>
+
             <div className="tabs-wrapper">
                 <div>
                     <AppBar position="static" style={{background: '#848482'}}>
@@ -24,6 +24,11 @@ const SimpleTabs = (props) => {
                             <Tab label="Charges"/>
                             <Tab label="Incomes"/>
                         </Tabs>
+                        <div>
+                            <Route path='/home' component={Home}/>
+                            <Route path='/charts' component={Charts}/>
+                            <Route path='/categories' component={Categories}/>
+                        </div>
                     </AppBar>
                 </div>
                 <TabPanel value={value} index={0}>
@@ -36,14 +41,10 @@ const SimpleTabs = (props) => {
                     <Incomes
                         incomes={props.incomes}/>
                 </TabPanel>
-                <div>
-                    <Route path='/home' component={Home}/>
-                    <Route path='/charts' component={Charts}/>
-                    <Route path='/categories' component={Categories}/>
-                </div>
+
             </div>
 
-        </BrowserRouter>
+
 
     )
 }

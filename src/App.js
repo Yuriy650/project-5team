@@ -6,18 +6,46 @@ import AddNewCategory from "./components/Dialogs/AddNewCategory";
 import AddNewCharge from "./components/Dialogs/AddNewCharge";
 import AddNewIncome from "./components/Dialogs/AddNewIncome";
 import {BrowserRouter} from "react-router-dom";
+import RestaurantMenuRoundedIcon from '@material-ui/icons/RestaurantMenuRounded';
+import LocalCafeIcon from '@material-ui/icons/LocalCafe';
+import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import LocalGasStationIcon from '@material-ui/icons/LocalGasStation';
+import PetsIcon from '@material-ui/icons/Pets';
+import DescriptionIcon from '@material-ui/icons/Description';
+import Grid from "@material-ui/core/Grid";
+import Charts from "./components/Charts/Charts";
+
+const chargesIcons = {margin: '5px 5px 5px 20px'}
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
             products: [
-                {category: 'Food', description: 'ashan', date: '21.01.2021', money: '$19.99'},
-                {category: 'Clothes', description: 'forum', date: '18.01.2021', money: '$49.99'},
-                {category: 'Restaurants', description: 'kryivka', date: '18.01.2021', money: '$19.99'},
-                {category: 'Fuel', description: 'okko', date: '18.01.2021', money: '$18.99'},
-                {category: 'Pets', description: ')))', date: '18.01.2021', money: '$9.99'},
-                {category: 'Utility bills', description: 'big bills((', date: '18.01.2021', money: '$149.99'}
+                {
+                    category: <Grid align={'left'}><RestaurantMenuRoundedIcon color={"primary"}/>Food</Grid>,
+                    description: 'ashan', date: '21.01.2021', money: '$19.99'
+                },
+                {
+                    category: <Grid align={'left'}><ShoppingBasketIcon color={"primary"}/>Clothes</Grid>,
+                    description: 'forum', date: '18.01.2021', money: '$49.99'
+                },
+                {
+                    category: <Grid align={'left'}><LocalCafeIcon color={"primary"}/>Restaurants</Grid>,
+                    description: 'kryivka', date: '18.01.2021', money: '$29.99'
+                },
+                {
+                    category: <Grid align={'left'}><LocalGasStationIcon color={"primary"}/>Fuel</Grid>,
+                    description: 'okko', date: '18.01.2021', money: '$38.99'
+                },
+                {
+                    category: <Grid align={'left'}><PetsIcon color={"primary"}/>Pets</Grid>,
+                    description: ')))', date: '18.01.2021', money: '$9.99'
+                },
+                {
+                    category: <Grid align={'left'}><DescriptionIcon color={"primary"}/>Utility Bills</Grid>,
+                    description: 'big bills((', date: '18.01.2021', money: '$129.99'
+                }
             ],
             incomes: [
                 {category: 'Salary', description: 'For a good job', date: '26.01.2021', total: '$1500'},
@@ -29,18 +57,19 @@ class App extends Component {
         this.handleChange = this.handleChange.bind(this);
         //this.handleIncomeChange = this.handleIncomeChange(this);
     }
+
     componentDidMount() {
         this.handleChange();
         //this.handleIncomeChange()
     }
 
     handleChange() {
-        for(let i=0; i<localStorage.length; i++){
+        for (let i = 0; i < localStorage.length; i++) {
             let newRow = JSON.parse(localStorage.getItem(`${localStorage.key(i)}`));
             console.log(newRow);
             let _products = this.state.products;
             let _incomes = this.state.incomes;
-            if(this.state.chargesCategories.includes(newRow.category.toLowerCase())){
+            if (this.state.chargesCategories.includes(newRow.category.toLowerCase())) {
                 _products.push(newRow);
                 this.setState({products: _products});
             } else if (this.state.incomesCategories.includes(newRow.category) && newRow) {
@@ -49,16 +78,7 @@ class App extends Component {
             }
         }
     }
-    /*handleIncomeChange() {
-        for(let i=0; i<localStorage.length; i++){
-            let newRow = JSON.parse(localStorage.getItem(`${localStorage.key(i)}`));
-            let _incomes = this.state.incomes;
-            if(this.state.incomesCategories.includes(newRow.category)){
-                _incomes.push(newRow);
-                this.setState({incomes: _incomes});
-            }
-        }
-    }*/
+
     render() {
         return (
             <BrowserRouter>
@@ -82,12 +102,16 @@ class App extends Component {
                                 products={this.state.products}
                                 handleChange={this.handleChange}
                                 incomes={this.state.incomes}
+                                data={this.state.products}
                             />
+                            <Charts data={this.state.products}/>
                         </div>
+
                     </div>
                 </div>
             </BrowserRouter>
         )
     }
 }
+
 export default App;
