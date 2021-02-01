@@ -57,19 +57,17 @@ class App extends Component {
         this.handleChange = this.handleChange.bind(this);
         //this.handleIncomeChange = this.handleIncomeChange(this);
     }
-
     componentDidMount() {
         this.handleChange();
         //this.handleIncomeChange()
     }
-
     handleChange() {
         for (let i = 0; i < localStorage.length; i++) {
             let newRow = JSON.parse(localStorage.getItem(`${localStorage.key(i)}`));
             console.log(newRow);
             let _products = this.state.products;
             let _incomes = this.state.incomes;
-            if (this.state.chargesCategories.includes(newRow.category.toLowerCase())) {
+            if (this.state.chargesCategories.includes(newRow.category)) {
                 _products.push(newRow);
                 this.setState({products: _products});
             } else if (this.state.incomesCategories.includes(newRow.category) && newRow) {
@@ -78,7 +76,6 @@ class App extends Component {
             }
         }
     }
-
     render() {
         return (
             <BrowserRouter>
