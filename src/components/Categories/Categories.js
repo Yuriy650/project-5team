@@ -9,23 +9,27 @@ import LocalCafeIcon from "@material-ui/icons/LocalCafe";
 import LocalGasStationIcon from "@material-ui/icons/LocalGasStation";
 import PetsIcon from "@material-ui/icons/Pets";
 import DescriptionIcon from "@material-ui/icons/Description";
+ import "./categories.css";
+
+
+ 
 
 class Categories extends Component {
     constructor(props) {
         super(props);
         this.state = {
             products: [
-                {category:<Grid align={'left'}><RestaurantMenuRoundedIcon color={"primary"}/> Food </Grid>,
+                {category:<Grid align={'center'}><RestaurantMenuRoundedIcon color={"primary"}/> Food </Grid>,
                     description: 'ashan', date: '21.01.2021'},
-                {category:<Grid align={'left'}><ShoppingBasketIcon color={"primary"}/> Clothes </Grid>,
+                {category:<Grid align={'center'}><ShoppingBasketIcon color={"primary"}/> Clothes </Grid>,
                     description: 'forum', date: '18.01.2021'},
-                {category:<Grid align={'left'}><LocalCafeIcon color={"primary"}/>Restaurants</Grid>,
+                {category:<Grid align={'center'}><LocalCafeIcon color={"primary"}/>Restaurants</Grid>,
                     description: 'kryivka', date: '18.01.2021'},
-                {category:<Grid align={'left'}><LocalGasStationIcon color={"primary"}/>Fuel</Grid>,
+                {category:<Grid align={'center'}><LocalGasStationIcon color={"primary"}/>Fuel</Grid>,
                     description: 'okko', date: '18.01.2021'},
-                {category:<Grid align={'left'}><PetsIcon color={"primary"}/>Pets</Grid>,
+                {category:<Grid align={'center'}><PetsIcon color={"primary"}/>Pets</Grid>,
                     description: ')))', date: '18.01.2021'},
-                {category:<Grid align={'left'}><DescriptionIcon color={"primary"}/>Utility Bills</Grid>,
+                {category:<Grid align={'center'}><DescriptionIcon color={"primary"}/>Utility Bills</Grid>,
                     description: 'big bills((', date: '18.01.2021'}
             ]
 
@@ -35,11 +39,11 @@ class Categories extends Component {
         return (
             <div>
                 <h1>Categories</h1>
-                <Table color>
+                <Table >
                     <TableHead >
                     <ProductHeadRow />
                     </TableHead>
-                    <TableBody>
+                    <TableBody className="center">
                     {this.state.products.map(item => {
                         return <ProductRow category={item.category} description={item.description}
                                            date={item.date} money={item.money}/>
@@ -54,7 +58,7 @@ class Categories extends Component {
 class ProductHeadRow extends React.Component {
     render() {
         return (
-            <tr>
+            <tr className="header_tr">
                 <th>Category</th>
                 <th>Description</th>
                 <th>Date</th>
