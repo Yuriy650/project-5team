@@ -48,8 +48,8 @@ class App extends Component {
                 }
             ],
             incomes: [
-                {category: 'Salary', description: 'For a good job', date: '26.01.2021', total: '$1500'},
-                {category: 'Rent', description: 'Rent apartment', date: '27.01.2021', total: '$600'}
+                {id: 1, category: 'Salary', description: 'For a good job', date: '26.01.2021', total: 1500},
+                {id: 2, category: 'Rent', description: 'Rent apartment', date: '27.01.2021', total: 600}
             ],
             chargesCategories: ['food', 'clothes', 'restaurants', 'fuel', 'pets', 'utility bills'],
             incomesCategories: ['Salary', 'Rent', 'Bonuses', 'Deposits', 'Profits', 'Sale of property']
@@ -104,7 +104,8 @@ class App extends Component {
                                 incomes={this.state.incomes}
                                 data={this.state.products}
                             />
-                            <Charts data={this.state.products}/>
+                            <Charts data={this.state.products}
+                                    dataIncomes={this.state.incomes}/>
                         </div>
 
                     </div>
