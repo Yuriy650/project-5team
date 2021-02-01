@@ -2,11 +2,11 @@ import React from 'react';
 import '../../App.css';
 import {AppBar, Tabs, Tab} from '@material-ui/core';
 import Charges from "./Charges";
-import SecondContent from "./SecondContent";
 import Categories from "../Categories/Categories";
-import {BrowserRouter, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
 import Home from "../Home/Home";
 import Charts from "../Charts/Charts";
+import Incomes from "./Incomes";
 
 
 const SimpleTabs = (props) => {
@@ -16,7 +16,7 @@ const SimpleTabs = (props) => {
         setValue(val);
     }
     return (
-        <BrowserRouter>
+
             <div className="tabs-wrapper">
                 <div>
                     <AppBar position="static" style={{background: '#848482'}}>
@@ -24,6 +24,11 @@ const SimpleTabs = (props) => {
                             <Tab label="Charges"/>
                             <Tab label="Incomes"/>
                         </Tabs>
+                        <div>
+                            <Route path='/home' component={Home}/>
+                            <Route path='/charts' component={Charts}/>
+                            <Route path='/categories' component={Categories}/>
+                        </div>
                     </AppBar>
                 </div>
                 <TabPanel value={value} index={0}>
@@ -32,15 +37,14 @@ const SimpleTabs = (props) => {
                         handleChange={props.handleChange}
                     />
                 </TabPanel>
-                <TabPanel value={value} index={1}> <SecondContent/> </TabPanel>
-                <div>
-                    <Route path='/home' component={Home}/>
-                    <Route path='/charts' component={Charts}/>
-                    <Route path='/categories' component={Categories}/>
-                </div>
+                <TabPanel value={value} index={1}>
+                    <Incomes
+                        incomes={props.incomes}/>
+                </TabPanel>
+
             </div>
 
-        </BrowserRouter>
+
 
     )
 }
