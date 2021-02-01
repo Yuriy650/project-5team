@@ -1,20 +1,19 @@
 import React, {Component} from 'react';
-
-class Charts extends Component {
+import ChartsOfCharges from "./ChartesOfCharges";
+import ChartsOfIncomes from "./ChartsOfIncomes";
+export default class Charts extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
-        }
+        };
     }
-render() {
+    render() {
         return (
             <div>
-                Charts srrtyreueyt
+                <ChartsOfCharges />
+                <ChartsOfIncomes dataIncomes={this.props.dataIncomes}/>
             </div>
-        )
-}
 
+        );
+    }
 }
-
-export default Charts;
