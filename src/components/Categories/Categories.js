@@ -2,17 +2,31 @@ import React, {Component} from 'react';
 import Table from "@material-ui/core/Table";
 import TableHead from "@material-ui/core/TableHead";
 import {TableBody} from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
+import RestaurantMenuRoundedIcon from "@material-ui/icons/RestaurantMenuRounded";
+import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+import LocalCafeIcon from "@material-ui/icons/LocalCafe";
+import LocalGasStationIcon from "@material-ui/icons/LocalGasStation";
+import PetsIcon from "@material-ui/icons/Pets";
+import DescriptionIcon from "@material-ui/icons/Description";
 
 class Categories extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            products: [{category: 'Food', description: 'ashan', date: '21.01.2021', money: '$19.99'},
-                {category: 'Clothes', description: 'forum', date: '18.01.2021', money: '$49.99'},
-                {category: 'Restaurants', description: 'kryivka', date: '18.01.2021', money: '$19.99'},
-                {category: 'Fuel', description: 'okko', date: '18.01.2021', money: '$18.99'},
-                {category: 'Pets', description: ')))', date: '18.01.2021', money: '$9.99'},
-                {category: 'Utility bills', description: 'big bills((', date: '18.01.2021', money: '$149.99'}
+            products: [
+                {category:<Grid align={'left'}><RestaurantMenuRoundedIcon color={"primary"}/> Food </Grid>,
+                    description: 'ashan', date: '21.01.2021'},
+                {category:<Grid align={'left'}><ShoppingBasketIcon color={"primary"}/> Clothes </Grid>,
+                    description: 'forum', date: '18.01.2021'},
+                {category:<Grid align={'left'}><LocalCafeIcon color={"primary"}/>Restaurants</Grid>,
+                    description: 'kryivka', date: '18.01.2021'},
+                {category:<Grid align={'left'}><LocalGasStationIcon color={"primary"}/>Fuel</Grid>,
+                    description: 'okko', date: '18.01.2021'},
+                {category:<Grid align={'left'}><PetsIcon color={"primary"}/>Pets</Grid>,
+                    description: ')))', date: '18.01.2021'},
+                {category:<Grid align={'left'}><DescriptionIcon color={"primary"}/>Utility Bills</Grid>,
+                    description: 'big bills((', date: '18.01.2021'}
             ]
 
         }
@@ -21,7 +35,7 @@ class Categories extends Component {
         return (
             <div>
                 <h1>Categories</h1>
-                <Table>
+                <Table color>
                     <TableHead >
                     <ProductHeadRow />
                     </TableHead>
