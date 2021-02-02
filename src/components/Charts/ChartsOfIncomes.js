@@ -1,57 +1,84 @@
-import * as React from 'react';
+import React, {Component} from 'react';
 import Paper from '@material-ui/core/Paper';
-import {
-    Chart,
-    BarSeries,
-    Title,
-    ArgumentAxis,
-    ValueAxis,
-} from '@devexpress/dx-react-chart-material-ui';
+import {Chart, PieSeries, Title,} from '@devexpress/dx-react-chart-material-ui';
 
 import {Animation} from '@devexpress/dx-react-chart';
-import {Component} from "react";
 
-const dataIncomes = [
-    {id: 1, category: 'Salary', description: 'For a good job', date: '26.01.2021', total: 1500},
-    {id: 2, category: 'Rent', description: 'Rent apartment', date: '27.01.2021', total: 600},
-    {id: 3, category: 'Deposits', description: 'Rent apartment', date: '11.01.2021', total: 800},
-    {id: 4, category: 'Bonuses', description: 'Rent apartment', date: '15.01.2021', total: 400},
-    {id: 5, category: 'Profits', description: 'Rent apartment', date: '21.01.2021', total: 500}
-]
+/*const dataCharges = [
+    { category:'Food', money: 19.99 },
+    { category: 'Clothes', money: 49.99 },
+    { category: 'Restaurants', money: 19.99 },
+    { category: 'Fuel', money: 38.99 },
+    { category: 'Pets', money: 9.99 },
+    { category: 'Utility Bills', money: 129.99 },
+]*/
 
 export default class ChartsOfIncomes extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            dataIncomes
+
         };
     }
-    /*changeState() {
-        this.setState({dataIncomes: this.props.dataIncomes} )
+    takeDataIncomes = () => {
+        let dataIncomes = [];
+        for (let i = 0; i < localStorage.length; i++) {
+            let newRow = JSON.parse(localStorage.getItem(`${localStorage.key(i)}`));
+            console.log(newRow);
+            if (this.props.incomesCategories.includes(newRow.category)) {
+                dataIncomes.push(newRow);
+
+            }
+        }
+        return dataIncomes;
     }
-    componentDidMount() {
-        this.changeState();
-    }*/
     render() {
 
-        const {dataIncomes: chartData} = this.state;
+        const chartData = this.takeDataIncomes();
         return (
             <Paper>
                 <Chart
                     data={chartData}
                 >
-                    <ArgumentAxis/>
-                    <ValueAxis max={7}/>
-
-                    <BarSeries
+                    <PieSeries
                         valueField="total"
                         argumentField="category"
+                        innerRadius={0.6}
                     />
-                    <Title text="All incomes for the month"/>
-                    <Animation/>
+                    <Title
+                        text="All incomes for the month"
+                    />
+                    <Animation />
                 </Chart>
             </Paper>
         );
+
     }
+//this.handleDataChange = this.handleDataChange.bind(this);
+}
+/*componentDidMount() {
+    this.handleDataChange();
 
 }
+componentDidUpdate(prevProps, prevState, snapshot) {
+    for(let i=0; i<localStorage.length; i++){
+        let newRow = JSON.parse(localStorage.getItem(`${localStorage.key(i)}`));
+        let _dataCharges = this.state.data;
+        if (localStorage.getItem(`${localStorage.key(i)}`)!==null &&
+            this.state.chargesCategories.includes(newRow.category.toLowerCase())) {
+            _dataCharges.push(newRow);
+            this.setState({data: _dataCharges});
+        }
+        }
+    }
+    handleDataChange() {
+    for(let i=0; i<localStorage.length; i++){
+        let newRow = JSON.parse(localStorage.getItem(`${localStorage.key(i)}`));
+        console.log(newRow);
+        let _dataCharges = this.state.data;
+        if(this.state.chargesCategories.includes(newRow.category.toLowerCase())){
+            _dataCharges.push(newRow);
+            this.setState({data: _dataCharges});
+        }
+    }
+}*/

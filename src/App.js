@@ -23,59 +23,85 @@ class App extends Component {
         this.state = {
             products: [
                 {
-                    category: <Grid align={'left'}><RestaurantMenuRoundedIcon color={"primary"}/>Food</Grid>,
-                    description: 'ashan', date: '21.01.2021', money: '$19.99'
+                    id: 1,
+                    category: 'Food',
+                    description: 'ashan', date: '11.01.2021', money: '19.99'
                 },
                 {
-                    category: <Grid align={'left'}><ShoppingBasketIcon color={"primary"}/>Clothes</Grid>,
-                    description: 'forum', date: '18.01.2021', money: '$49.99'
+                    id: 2,
+                    category: 'Clothes',
+                    description: 'forum', date: '15.01.2021', money: '49.99'
                 },
                 {
-                    category: <Grid align={'left'}><LocalCafeIcon color={"primary"}/>Restaurants</Grid>,
-                    description: 'kryivka', date: '18.01.2021', money: '$29.99'
+                    id: 3,
+                    category: 'Restaurants',
+                    description: 'kryivka', date: '26.01.2021', money: '29.99'
                 },
                 {
-                    category: <Grid align={'left'}><LocalGasStationIcon color={"primary"}/>Fuel</Grid>,
-                    description: 'okko', date: '18.01.2021', money: '$38.99'
+                    id: 4,
+                    category: 'Fuel',
+                    description: 'okko', date: '27.01.2021', money: '38.99'
                 },
                 {
-                    category: <Grid align={'left'}><PetsIcon color={"primary"}/>Pets</Grid>,
-                    description: ')))', date: '18.01.2021', money: '$9.99'
+                    id: 5,
+                    category: 'Pets',
+                    description: ')))', date: '29.01.2021', money: '9.99'
                 },
                 {
-                    category: <Grid align={'left'}><DescriptionIcon color={"primary"}/>Utility Bills</Grid>,
-                    description: 'big bills((', date: '18.01.2021', money: '$129.99'
+                    id: 6,
+                    category: 'Utility Bills',
+                    description: 'big bills((', date: '31.01.2021', money: '59.99'
+                },
+                {
+                    category: 'Utility Bills',
+                    description: 'big bills((', date: '31.01.2021', money: '29.99'
                 }
             ],
             incomes: [
-                {id: 1, category: 'Salary', description: 'For a good job', date: '26.01.2021', total: 1500},
-                {id: 2, category: 'Rent', description: 'Rent apartment', date: '27.01.2021', total: 600}
+                {id: 1, category: 'Salary', description: 'For a good job', date: '26.01.2021', total: 500},
+                {id: 2, category: 'Rent', description: 'Rent apartment', date: '27.01.2021', total: 600},
+                {id: 3, category: 'Profit', description: 'Rent apartment', date: '27.01.2021', total: 200}
+
             ],
-            chargesCategories: ['food', 'clothes', 'restaurants', 'fuel', 'pets', 'utility bills'],
+            chargesCategories: ['Food', 'Clothes', 'Restaurants', 'Fuel', 'Pets', 'Utility bills'],
             incomesCategories: ['Salary', 'Rent', 'Bonuses', 'Deposits', 'Profits', 'Sale of property']
         }
         this.handleChange = this.handleChange.bind(this);
-        //this.handleIncomeChange = this.handleIncomeChange(this);
+
     }
+
     componentDidMount() {
         this.handleChange();
-        //this.handleIncomeChange()
+        this.changeState();
     }
+
     handleChange() {
+        let _products = [...this.state.products];
+        this.setState({products: _products});
+        let _incomes = [...this.state.incomes];
+        this.setState({incomes: _incomes});
+    }
+
+    changeState = () => {
         for (let i = 0; i < localStorage.length; i++) {
             let newRow = JSON.parse(localStorage.getItem(`${localStorage.key(i)}`));
+
             console.log(newRow);
-            let _products = this.state.products;
             let _incomes = this.state.incomes;
+            let _products = this.state.products;
             if (this.state.chargesCategories.includes(newRow.category)) {
+
                 _products.push(newRow);
+                _products.forEach(item => console.log(item.id));
                 this.setState({products: _products});
+
             } else if (this.state.incomesCategories.includes(newRow.category) && newRow) {
                 _incomes.push(newRow);
                 this.setState({incomes: _incomes});
             }
         }
     }
+
     render() {
         return (
             <BrowserRouter>
@@ -101,8 +127,12 @@ class App extends Component {
                                 incomes={this.state.incomes}
                                 data={this.state.products}
                             />
-                            <Charts data={this.state.products}
-                                    dataIncomes={this.state.incomes}/>
+                            <Charts dataCharges={this.state.products}
+                                    dataIncomes={this.state.incomes}
+                                    changeChart={this.handleChange}
+                                    chargesCategories={this.state.chargesCategories}
+                                    changeState={this.changeState}
+                                    incomesCategories={this.state.incomesCategories}/>
                         </div>
 
                     </div>

@@ -44,7 +44,7 @@ class ProductHeadRow extends React.Component {
                 <th align={"center"}>Category</th>
                 <th align={"center"}>Description</th>
                 <th align={"center"}>Date</th>
-                <th align={"center"}>Money</th>
+                <th align={"center"}>Money, $</th>
             </tr>
 
         )

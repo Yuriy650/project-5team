@@ -43,6 +43,7 @@ function AddNewIncome(props) {
             total: e.target[0].value
         };
         localStorage.setItem(`${newRow.id}`, JSON.stringify(newRow));
+        props.incomes.push(newRow);
         props.handleIncomeOnSubmit();
     }
 

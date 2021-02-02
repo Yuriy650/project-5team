@@ -1,31 +1,40 @@
 import React, {Component} from 'react';
 import Paper from '@material-ui/core/Paper';
-import {
-    Chart,
-    PieSeries,
-    Title,
-} from '@devexpress/dx-react-chart-material-ui';
+import {Chart, PieSeries, Title,} from '@devexpress/dx-react-chart-material-ui';
 
-import { Animation } from '@devexpress/dx-react-chart';
+import {Animation} from '@devexpress/dx-react-chart';
 
-const dataCharges = [
+/*const dataCharges = [
     { category:'Food', money: 19.99 },
     { category: 'Clothes', money: 49.99 },
     { category: 'Restaurants', money: 19.99 },
     { category: 'Fuel', money: 38.99 },
     { category: 'Pets', money: 9.99 },
     { category: 'Utility Bills', money: 129.99 },
-]
+]*/
+
 export default class ChartsOfCharges extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            dataCharges,
+
         };
     }
+    takeDataCharges = () => {
+        let dataCharges = [];
+        for (let i = 0; i < localStorage.length; i++) {
+            let newRow = JSON.parse(localStorage.getItem(`${localStorage.key(i)}`));
+            console.log(newRow);
+            if (this.props.chargesCategories.includes(newRow.category)) {
+                dataCharges.push(newRow);
+
+            }
+        }
+        return dataCharges;
+    }
     render() {
-        const { dataCharges: chartData } = this.state;
-        console.log({dataCharges: chartData})
+
+        const chartData = this.takeDataCharges();
         return (
             <Paper>
                 <Chart

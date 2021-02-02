@@ -44,6 +44,7 @@ const useStyles = makeStyles({
             money: e.target[0].value
         };
         localStorage.setItem(`${newRow.id}`, JSON.stringify(newRow));
+        props.products.push(newRow);
         props.handleOnSubmit();
     }
 
