@@ -77,3 +77,12 @@ a {
 .appbar {
   color: black;
 }
+.balance {
+  font-family: sans-serif;
+  font-weight: bold;
+  color: #ff8920;
+  font-size: xx-large;
+  text-align: right;
+  margin-right: 40px;
+  padding-right: 20px;
+}

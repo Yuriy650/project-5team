@@ -4,20 +4,11 @@ import {Chart, PieSeries, Title,} from '@devexpress/dx-react-chart-material-ui';
 
 import {Animation} from '@devexpress/dx-react-chart';
 
-/*const dataCharges = [
-    { category:'Food', money: 19.99 },
-    { category: 'Clothes', money: 49.99 },
-    { category: 'Restaurants', money: 19.99 },
-    { category: 'Fuel', money: 38.99 },
-    { category: 'Pets', money: 9.99 },
-    { category: 'Utility Bills', money: 129.99 },
-]*/
-
 export default class ChartsOfIncomes extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            incomesCategories: ['Salary', 'Rent', 'Bonuses', 'Deposits', 'Profits', 'Sale of property']
         };
     }
     takeDataIncomes = () => {
@@ -25,7 +16,7 @@ export default class ChartsOfIncomes extends Component {
         for (let i = 0; i < localStorage.length; i++) {
             let newRow = JSON.parse(localStorage.getItem(`${localStorage.key(i)}`));
             console.log(newRow);
-            if (this.props.incomesCategories.includes(newRow.category)) {
+            if (this.state.incomesCategories.includes(newRow.category)) {
                 dataIncomes.push(newRow);
 
             }
@@ -54,31 +45,4 @@ export default class ChartsOfIncomes extends Component {
         );
 
     }
-//this.handleDataChange = this.handleDataChange.bind(this);
 }
-/*componentDidMount() {
-    this.handleDataChange();
-
-}
-componentDidUpdate(prevProps, prevState, snapshot) {
-    for(let i=0; i<localStorage.length; i++){
-        let newRow = JSON.parse(localStorage.getItem(`${localStorage.key(i)}`));
-        let _dataCharges = this.state.data;
-        if (localStorage.getItem(`${localStorage.key(i)}`)!==null &&
-            this.state.chargesCategories.includes(newRow.category.toLowerCase())) {
-            _dataCharges.push(newRow);
-            this.setState({data: _dataCharges});
-        }
-        }
-    }
-    handleDataChange() {
-    for(let i=0; i<localStorage.length; i++){
-        let newRow = JSON.parse(localStorage.getItem(`${localStorage.key(i)}`));
-        console.log(newRow);
-        let _dataCharges = this.state.data;
-        if(this.state.chargesCategories.includes(newRow.category.toLowerCase())){
-            _dataCharges.push(newRow);
-            this.setState({data: _dataCharges});
-        }
-    }
-}*/

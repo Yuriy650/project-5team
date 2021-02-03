@@ -18,6 +18,7 @@ const options = {
     legend: { position: "bottom" }
 };
 export default class ChartsIncomeCharges extends Component {
+
     render() {
         return (
             <div className="App">

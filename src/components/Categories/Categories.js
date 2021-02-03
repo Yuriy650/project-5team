@@ -19,7 +19,7 @@ class Categories extends Component {
         super(props);
         this.state = {
             products: [
-                {category:<Grid align={'center'}><RestaurantMenuRoundedIcon color={"primary"}/> Food </Grid>,
+                {category:<Grid align={'center'}><RestaurantMenuRoundedIcon color={"primary"}/>Food </Grid>,
                     description: 'ashan', date: '21.01.2021'},
                 {category:<Grid align={'center'}><ShoppingBasketIcon color={"primary"}/> Clothes </Grid>,
                     description: 'forum', date: '18.01.2021'},

@@ -6,17 +6,8 @@ import AddNewCategory from "./components/Dialogs/AddNewCategory";
 import AddNewCharge from "./components/Dialogs/AddNewCharge";
 import AddNewIncome from "./components/Dialogs/AddNewIncome";
 import {BrowserRouter} from "react-router-dom";
-import RestaurantMenuRoundedIcon from '@material-ui/icons/RestaurantMenuRounded';
-import LocalCafeIcon from '@material-ui/icons/LocalCafe';
-import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
-import LocalGasStationIcon from '@material-ui/icons/LocalGasStation';
-import PetsIcon from '@material-ui/icons/Pets';
-import DescriptionIcon from '@material-ui/icons/Description';
-import Grid from "@material-ui/core/Grid";
 import Charts from "./components/Charts/Charts";
-
 const chargesIcons = {margin: '5px 5px 5px 20px'}
-
 class App extends Component {
     constructor(props) {
         super(props);
@@ -60,48 +51,63 @@ class App extends Component {
             incomes: [
                 {id: 1, category: 'Salary', description: 'For a good job', date: '26.01.2021', total: 500},
                 {id: 2, category: 'Rent', description: 'Rent apartment', date: '27.01.2021', total: 600},
-                {id: 3, category: 'Profit', description: 'Rent apartment', date: '27.01.2021', total: 200}
-
+                {id: 3, category: 'Profits', description: 'Rent apartment', date: '27.01.2021', total: 200}
             ],
             chargesCategories: ['Food', 'Clothes', 'Restaurants', 'Fuel', 'Pets', 'Utility bills'],
             incomesCategories: ['Salary', 'Rent', 'Bonuses', 'Deposits', 'Profits', 'Sale of property']
         }
         this.handleChange = this.handleChange.bind(this);
-
     }
-
     componentDidMount() {
         this.handleChange();
         this.changeState();
+        this.findBalance()
     }
-
     handleChange() {
         let _products = [...this.state.products];
         this.setState({products: _products});
         let _incomes = [...this.state.incomes];
         this.setState({incomes: _incomes});
     }
-
-    changeState = () => {
+    changeState () {
         for (let i = 0; i < localStorage.length; i++) {
             let newRow = JSON.parse(localStorage.getItem(`${localStorage.key(i)}`));
-
             console.log(newRow);
             let _incomes = this.state.incomes;
             let _products = this.state.products;
             if (this.state.chargesCategories.includes(newRow.category)) {
-
                 _products.push(newRow);
                 _products.forEach(item => console.log(item.id));
                 this.setState({products: _products});
-
             } else if (this.state.incomesCategories.includes(newRow.category) && newRow) {
                 _incomes.push(newRow);
                 this.setState({incomes: _incomes});
             }
         }
     }
+    findBalance() {
+        let balance;
+        let totalIncomes = 0;
+        let totalCharges = 0;
+        for (let i = 0; i < localStorage.length; i++) {
+            let newRow = JSON.parse(localStorage.getItem(`${localStorage.key(i)}`));
+            console.log(newRow);
 
+
+            if (this.state.chargesCategories.includes(newRow.category)) {
+            totalCharges += +newRow.money;
+            console.log(totalCharges);
+            } else {
+                totalIncomes += +newRow.total;
+                console.log(totalIncomes);
+            }
+
+        }
+        balance = totalIncomes-totalCharges;
+        console.log(balance)
+
+return balance;
+    }
     render() {
         return (
             <BrowserRouter>
@@ -109,6 +115,7 @@ class App extends Component {
                     <div className="main-wrapper">
                         <Navigation/>
                     </div>
+
                     <div className="main-btn">
                         <div className="bnt-add">
                             <AddNewCategory/>
@@ -120,6 +127,7 @@ class App extends Component {
                                 incomes={this.state.incomes}
                                 handleIncomeOnSubmit={this.handleChange}/>
                         </div>
+                        <div className='balance'>BALANCE: {this.findBalance()}$</div>
                         <div className="bnt-tabs">
                             <TabsContent
                                 products={this.state.products}
@@ -141,5 +149,4 @@ class App extends Component {
         )
     }
 }
-
 export default App;
