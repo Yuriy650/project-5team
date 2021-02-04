@@ -15,8 +15,7 @@ export default class ChartsOfCharges extends Component {
         let dataCharges = [];
         for (let i = 0; i < localStorage.length; i++) {
             let newRow = JSON.parse(localStorage.getItem(`${localStorage.key(i)}`));
-            console.log(newRow);
-            if (this.state.chargesCategories.includes(newRow.category)) {
+           if (this.state.chargesCategories.includes(newRow.category)) {
                 dataCharges.push(newRow);
             }
         }
@@ -30,7 +29,7 @@ export default class ChartsOfCharges extends Component {
                     data={chartData}
                 >
                     <PieSeries
-                        valueField="money"
+                        valueField="total"
                         argumentField="category"
                         innerRadius={0.6}
                     />

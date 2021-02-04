@@ -34,7 +34,7 @@ a {
   border: none;
 }
 .navbar-wrapper div a:hover {
-  border-bottom: 1px solid orange;
+  border-bottom: 1px solid darkorange;
   padding-bottom: 4px;
 }
 .content {
@@ -81,6 +81,15 @@ a {
   font-family: sans-serif;
   font-weight: bold;
   color: #ff8920;
+  font-size: xx-large;
+  text-align: right;
+  margin-right: 40px;
+  padding-right: 20px;
+}
+.balance-attention {
+  font-family: sans-serif;
+  font-weight: bold;
+  color: #ff300d;
   font-size: xx-large;
   text-align: right;
   margin-right: 40px;

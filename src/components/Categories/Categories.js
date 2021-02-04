@@ -46,7 +46,7 @@ class Categories extends Component {
                     <TableBody className="center">
                     {this.state.products.map(item => {
                         return <ProductRow category={item.category} description={item.description}
-                                           date={item.date} money={item.money}/>
+                                           date={item.date} total={item.total}/>
                     })}
                     </TableBody>
                 </Table>

@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {makeStyles, Paper, TableBody, TableContainer, TableHead} from "@material-ui/core";
 import Table from "@material-ui/core/Table";
-import "./changes.css"
+import "./Charges/changes.css"
 
 
 

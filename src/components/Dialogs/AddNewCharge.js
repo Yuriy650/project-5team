@@ -41,7 +41,7 @@ const useStyles = makeStyles({
             category: e.target[2].value,
             description: e.target[1].value,
             date: e.target[3].value,
-            money: e.target[0].value
+            total: e.target[0].value
         };
         localStorage.setItem(`${newRow.id}`, JSON.stringify(newRow));
         props.products.push(newRow);
@@ -59,7 +59,7 @@ const useStyles = makeStyles({
                         autoFocus
                         margin="dense"
                         placeholder="only number"
-                        id="money"
+                        id="total"
                         label="Total"
                         type="text"
                         fullWidth

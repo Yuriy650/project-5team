@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../App.css';
 import {AppBar, Tabs, Tab} from '@material-ui/core';
-import Charges from "./Charges";
+import Charges from "./Charges/Charges";
 import Categories from "../Categories/Categories";
 import {Route} from "react-router-dom";
 import Home from "../Home/Home";
@@ -35,6 +35,8 @@ const SimpleTabs = (props) => {
                     <Charges
                         products={props.products}
                         handleChange={props.handleChange}
+                        checkFilterProducts={props.checkFilterProducts}
+                        checkFilterTotal={props.checkFilterTotal}
                     />
                 </TabPanel>
                 <TabPanel value={value} index={1}>

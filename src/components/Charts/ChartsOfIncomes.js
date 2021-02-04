@@ -15,7 +15,6 @@ export default class ChartsOfIncomes extends Component {
         let dataIncomes = [];
         for (let i = 0; i < localStorage.length; i++) {
             let newRow = JSON.parse(localStorage.getItem(`${localStorage.key(i)}`));
-            console.log(newRow);
             if (this.state.incomesCategories.includes(newRow.category)) {
                 dataIncomes.push(newRow);
 
