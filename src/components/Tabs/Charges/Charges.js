@@ -1,16 +1,10 @@
 import React, {Component} from 'react';
 import Table from "@material-ui/core/Table";
-import {Paper, TableBody, TableContainer, TableHead} from "@material-ui/core";
-import {makeStyles} from "@material-ui/core";
-import MoreVertOutlinedIcon from '@material-ui/icons/MoreVertOutlined';
+import {makeStyles, Paper, TableBody, TableContainer, TableHead} from "@material-ui/core";
 import "../Charges/changes.css";
-import ChooseCategory from "../MoreVertCharges/ChooseCategory";
-import SortTotal from "../MoreVertCharges/SortTotal";
-import ChooseDate from "../MoreVertCharges/ChooseDate";
-import FindDescription from "../MoreVertCharges/FindDescription";
 import InputLabel from "@material-ui/core/InputLabel";
 import NativeSelect from "@material-ui/core/NativeSelect";
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import TextField from "@material-ui/core/TextField";
 
 
 class Charges extends Component {
@@ -30,7 +24,9 @@ class Charges extends Component {
                         <TableHead>
                             <ProductHeadRow products={this.props.products}
                                             checkFilterProducts={this.props.checkFilterProducts}
-                                            checkFilterTotal={this.props.checkFilterTotal}/>
+                                            checkFilterTotal={this.props.checkFilterTotal}
+                                            checkFilterDate={this.props.checkFilterDate}
+                            />
                         </TableHead>
                         <TableBody>
                             {this.props.products.map((item, i) => {
@@ -64,6 +60,18 @@ class ProductHeadRow extends React.Component {
         }
 
     }
+    handleDateOnSubmit = (e) => {
+        e.preventDefault();
+        const begin = e.target[0].value;
+        const end = e.target[1].value;
+        let beginDate = new Date(begin);
+        let endDate = new Date(end);
+        let filterDate = this.props.products.filter(item => {
+            return ((new Date(item.date)).getTime() >= beginDate.getTime()) &&
+            ((new Date(item.date)).getTime()<= endDate.getTime())
+        })
+        this.props.checkFilterDate(filterDate);
+    }
 
     render() {
         return (
@@ -71,7 +79,7 @@ class ProductHeadRow extends React.Component {
                 <th className='chargesMenuCategory' align='center'>
                     <div>Category</div>
                     <InputLabel htmlFor="select"/>
-                    <NativeSelect onChange={this.handleOnClick} id="select">
+                    <NativeSelect onSubmit={this.handleOnClick} id="select">
                         <option value="Category">Select category</option>
                         <option value="Food">Food</option>
                         <option value="Restaurants">Restaurant</option>
@@ -84,8 +92,28 @@ class ProductHeadRow extends React.Component {
                 <th className='chargesMenuDescription' align='center'>
                     <div>Description</div>
                 </th>
-                <th className='chargesMenuDate' align='center'>
-                    <div>Date</div>
+                <th className='chargesMenuDate'  align='center'>
+                    <div >Date</div>
+                    <form onSubmit={this.handleDateOnSubmit}>
+                    <TextField className='date-textField'
+                        id="date"
+                        label="Begin"
+                        type="date"
+                        defaultValue="2021-01-11"
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
+                        <TextField className='date-textField'
+                            id="date"
+                            label="End"
+                            type="date"
+                            InputLabelProps={{
+                                shrink: true,
+                            }}
+                        />
+                        <button className='dateBtn' type='submit'>Get</button>
+                    </form>
                 </th>
                 <th className='chargesMenuTotal' align='center'>
                     <div>Total, $</div>

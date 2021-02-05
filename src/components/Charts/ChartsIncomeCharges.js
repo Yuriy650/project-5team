@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import ReactDOM from "react-dom";
 import Chart from "react-google-charts";
 // Ref : https://developers.google.com/chart/interactive/docs/gallery/histogram
 

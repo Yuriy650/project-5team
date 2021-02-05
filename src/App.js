@@ -16,36 +16,36 @@ class App extends Component {
                 {
                     id: 1,
                     category: 'Food',
-                    description: 'ashan', date: '11.01.2021', total: '19.99'
+                    description: 'ashan', date: '2021.01.11', total: '19.99'
                 },
                 {
                     id: 2,
                     category: 'Clothes',
-                    description: 'forum', date: '15.01.2021', total: '49.99'
+                    description: 'forum', date: '2021.01.15', total: '49.99'
                 },
                 {
                     id: 3,
                     category: 'Restaurants',
-                    description: 'kryivka', date: '26.01.2021', total: '29.99'
+                    description: 'kryivka', date: '2021.01.21', total: '29.99'
                 },
                 {
                     id: 4,
                     category: 'Fuel',
-                    description: 'okko', date: '27.01.2021', total: '38.99'
+                    description: 'okko', date: '2021.01.27', total: '38.99'
                 },
                 {
                     id: 5,
                     category: 'Pets',
-                    description: ')))', date: '29.01.2021', total: '9.99'
+                    description: ')))', date: '2021.02.01', total: '9.99'
                 },
                 {
                     id: 6,
                     category: 'Utility Bills',
-                    description: 'big bills((', date: '31.01.2021', total: '59.99'
+                    description: 'big bills((', date: '2021.02.3', total: '59.99'
                 },
                 {
                     category: 'Utility Bills',
-                    description: 'big bills((', date: '31.01.2021', total: '29.99'
+                    description: 'big bills((', date: '2021.01.31', total: '29.99'
                 }
             ],
             incomes: [
@@ -59,6 +59,7 @@ class App extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.checkFilterProducts=this.checkFilterProducts.bind(this);
         this.checkFilterTotal=this.checkFilterTotal.bind(this);
+        this.checkFilterDate=this.checkFilterDate.bind(this);
     }
 
     componentDidMount() {
@@ -67,6 +68,7 @@ class App extends Component {
         this.findBalance();
         this.checkFilterProducts();
         this.checkFilterTotal();
+        this.checkFilterDate();
     }
 
     handleChange() {
@@ -125,6 +127,11 @@ class App extends Component {
             this.setState({...this.state, products: filterTotal})
         }
     }
+    checkFilterDate(filterDate) {
+        if(filterDate) {
+            this.setState({...this.state, products: filterDate})
+        }
+    }
 
     render() {
         return (
@@ -153,6 +160,7 @@ class App extends Component {
                                 data={this.state.products}
                                 checkFilterProducts={this.checkFilterProducts}
                                 checkFilterTotal={this.checkFilterTotal}
+                                checkFilterDate={this.checkFilterDate}
                             />
                             <Charts dataCharges={this.state.products}
                                     dataIncomes={this.state.incomes}

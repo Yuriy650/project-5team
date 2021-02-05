@@ -37,6 +37,7 @@ const SimpleTabs = (props) => {
                         handleChange={props.handleChange}
                         checkFilterProducts={props.checkFilterProducts}
                         checkFilterTotal={props.checkFilterTotal}
+                        checkFilterDate={props.checkFilterDate}
                     />
                 </TabPanel>
                 <TabPanel value={value} index={1}>
