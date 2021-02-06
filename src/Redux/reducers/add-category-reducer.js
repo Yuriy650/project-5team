@@ -7,7 +7,8 @@ import LocalGasStationIcon from "@material-ui/icons/LocalGasStation";
 import PetsIcon from "@material-ui/icons/Pets";
 import DescriptionIcon from "@material-ui/icons/Description";
 import React from "react";
-let initialState =  {
+const  initialState =
+{
     categories: [
         {category:<Grid align={'center'}><RestaurantMenuRoundedIcon color={"primary"}/>Food </Grid>,
             description: 'ashan', date: '21.01.2021'},
@@ -31,6 +32,7 @@ export const addCategoryReducer = (state=initialState, action) => {
                 ...state,
                 categories: [...state.categories, action.payload]
             }
-    }
+            }
     return state;
-}
+    }
+

@@ -10,6 +10,8 @@ import LocalGasStationIcon from "@material-ui/icons/LocalGasStation";
 import PetsIcon from "@material-ui/icons/Pets";
 import DescriptionIcon from "@material-ui/icons/Description";
  import "./categories.css";
+import addCategory from "../../Redux/actions/add-category-action";
+import {connect} from "react-redux";
 
 
 
@@ -34,7 +36,9 @@ class Categories extends Component {
             ]
 
         }
+
     }
+
     render() {
         return (
             <div>
@@ -44,9 +48,9 @@ class Categories extends Component {
                     <CategoriesHeadRow />
                     </TableHead>
                     <TableBody className="center">
-                    {this.state.categories.map(item => {
+                    {this.props.state.categories.map(item => {
                         return <CategoriesRow category={item.category} description={item.description}
-                                           date={item.date} total={item.total}/>
+                                           date={item.date} />
                     })}
                     </TableBody>
                 </Table>
@@ -81,5 +85,10 @@ class CategoriesRow extends React.Component {
     }
 
 }
+const mapStateToProps = (state) => {
+    return {
 
-export default Categories;
+        state: state.categories
+    };
+};
+export default connect(mapStateToProps, {addCategory})(Categories)

@@ -5,7 +5,7 @@ import {addCategoryReducer} from "./add-category-reducer";
 
 export const rootReducer = combineReducers({
 
-    addCategoryReducer
+    categories: addCategoryReducer
     /*authors: appReducer,
     count:counterLikesReducer*/
 

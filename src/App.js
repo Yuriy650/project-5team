@@ -7,6 +7,8 @@ import AddNewCharge from "./components/Dialogs/AddNewCharge";
 import AddNewIncome from "./components/Dialogs/AddNewIncome";
 import {BrowserRouter} from "react-router-dom";
 import Charts from "./components/Charts/Charts";
+import addCategory from "./Redux/actions/add-category-action";
+
 
 class App extends Component {
     constructor(props) {
@@ -163,7 +165,7 @@ class App extends Component {
                     </div>
                     <div className="main-btn">
                         <div className="bnt-add">
-                            <AddNewCategory/>
+                            <AddNewCategory addCategory={addCategory}/>
                             <AddNewCharge
                                 products={this.state.products}
                                 handleOnSubmit={this.handleChange}
