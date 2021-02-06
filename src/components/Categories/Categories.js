@@ -12,13 +12,13 @@ import DescriptionIcon from "@material-ui/icons/Description";
  import "./categories.css";
 
 
- 
+
 
 class Categories extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            products: [
+            categories: [
                 {category:<Grid align={'center'}><RestaurantMenuRoundedIcon color={"primary"}/>Food </Grid>,
                     description: 'ashan', date: '21.01.2021'},
                 {category:<Grid align={'center'}><ShoppingBasketIcon color={"primary"}/> Clothes </Grid>,
@@ -41,11 +41,11 @@ class Categories extends Component {
                 <h1>Categories</h1>
                 <Table >
                     <TableHead >
-                    <ProductHeadRow />
+                    <CategoriesHeadRow />
                     </TableHead>
                     <TableBody className="center">
-                    {this.state.products.map(item => {
-                        return <ProductRow category={item.category} description={item.description}
+                    {this.state.categories.map(item => {
+                        return <CategoriesRow category={item.category} description={item.description}
                                            date={item.date} total={item.total}/>
                     })}
                     </TableBody>
@@ -55,7 +55,7 @@ class Categories extends Component {
     }
 }
 
-class ProductHeadRow extends React.Component {
+class CategoriesHeadRow extends React.Component {
     render() {
         return (
             <tr className="header_tr">
@@ -68,7 +68,7 @@ class ProductHeadRow extends React.Component {
     }
 }
 
-class ProductRow extends React.Component {
+class CategoriesRow extends React.Component {
     render() {
         return (
             <tr>

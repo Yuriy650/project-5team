@@ -8,6 +8,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import { makeStyles } from '@material-ui/core/styles';
+import {connect} from "react-redux";
+import addCategory from "../../Redux/actions/add-category-action";
 
 
 const useStyles = makeStyles({
@@ -22,7 +24,7 @@ const useStyles = makeStyles({
   });
 
 
-function AddNewCategory() {
+const AddNewCategory=(props)=> {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
@@ -33,13 +35,26 @@ function AddNewCategory() {
     const handleClose = () => {
         setOpen(false);
     };
-
+    const handleCategoryOnSubmit = (e) => {
+        e.preventDefault();
+        console.log(e.target[0].value)
+        const newCategory = {
+            id: Math.floor(Math.random()*100),
+            category: e.target[0].value,
+            description: e.target[1].value,
+            date: e.target[2].value
+        };
+        console.log(newCategory)
+        /*localStorage.setItem(`${newRow.id}`, JSON.stringify(newRow));
+        props.products.push(newRow);*/
+        //addCategory(newCategory);
+    }
     return (
         <div>
             <Button variant="outlined"  onClick={handleClickOpen} className={classes.root} > Add new category</Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">New category</DialogTitle>
-
+                <form onSubmit={handleCategoryOnSubmit}>
                 <DialogContent>
                     <TextField
                         autoFocus
@@ -65,7 +80,7 @@ function AddNewCategory() {
                         <option value={30}>Thirty</option>
                     </Select>
                 </DialogContent>
-
+                </form>
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">Cancel</Button>
                     <Button onClick={handleClose} color="primary">Add</Button>
@@ -75,5 +90,7 @@ function AddNewCategory() {
         </div>
     );
 }
+
+
 
 export default AddNewCategory;

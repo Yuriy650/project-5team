@@ -42,7 +42,11 @@ const SimpleTabs = (props) => {
                 </TabPanel>
                 <TabPanel value={value} index={1}>
                     <Incomes
-                        incomes={props.incomes}/>
+                        state={props.state}
+                        incomes={props.incomes}
+                        checkFilterIncomesCategory={props.checkFilterIncomesCategory}
+                        checkFilterIncomesTotal={props.checkFilterIncomesTotal}
+                        checkFilterIncomesDate={props.checkFilterIncomesDate}/>
                 </TabPanel>
 
             </div>

@@ -60,6 +60,9 @@ class App extends Component {
         this.checkFilterProducts=this.checkFilterProducts.bind(this);
         this.checkFilterTotal=this.checkFilterTotal.bind(this);
         this.checkFilterDate=this.checkFilterDate.bind(this);
+        this.checkFilterIncomesCategory=this.checkFilterIncomesCategory.bind(this);
+        this.checkFilterIncomesTotal=this.checkFilterIncomesTotal.bind(this);
+        this.checkFilterIncomesDate=this.checkFilterIncomesDate.bind(this);
     }
 
     componentDidMount() {
@@ -69,6 +72,9 @@ class App extends Component {
         this.checkFilterProducts();
         this.checkFilterTotal();
         this.checkFilterDate();
+        this.checkFilterIncomesCategory();
+        this.checkFilterIncomesTotal();
+        this.checkFilterIncomesDate()
     }
 
     handleChange() {
@@ -132,6 +138,21 @@ class App extends Component {
             this.setState({...this.state, products: filterDate})
         }
     }
+    checkFilterIncomesCategory(filterCategory) {
+        if(filterCategory) {
+            this.setState({...this.state, incomes: filterCategory})
+        }
+    }
+    checkFilterIncomesTotal(filterTotal) {
+        if(filterTotal) {
+            this.setState({...this.state, incomes: filterTotal})
+        }
+    }
+    checkFilterIncomesDate(filterDate) {
+        if(filterDate) {
+            this.setState({...this.state, incomes: filterDate})
+        }
+    }
 
     render() {
         return (
@@ -154,6 +175,7 @@ class App extends Component {
                         <div className='balance'>BALANCE: {this.findBalance()}$</div>
                         <div className="bnt-tabs">
                             <TabsContent
+                                state = {this.state}
                                 products={this.state.products}
                                 handleChange={this.handleChange}
                                 incomes={this.state.incomes}
@@ -161,6 +183,9 @@ class App extends Component {
                                 checkFilterProducts={this.checkFilterProducts}
                                 checkFilterTotal={this.checkFilterTotal}
                                 checkFilterDate={this.checkFilterDate}
+                                checkFilterIncomesCategory={this.checkFilterIncomesCategory}
+                                checkFilterIncomesTotal={this.checkFilterIncomesTotal}
+                                checkFilterIncomesDate={this.checkFilterIncomesDate}
                             />
                             <Charts dataCharges={this.state.products}
                                     dataIncomes={this.state.incomes}

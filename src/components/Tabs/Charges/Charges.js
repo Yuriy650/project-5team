@@ -42,7 +42,7 @@ class Charges extends Component {
 }
 
 class ProductHeadRow extends React.Component {
-    handleOnClick = (e) => {
+    handleOnChange = (e) => {
         const filterProducts = this.props.products.filter(item => item.category === e.target.value);
         this.props.checkFilterProducts(filterProducts);
     }
@@ -79,7 +79,7 @@ class ProductHeadRow extends React.Component {
                 <th className='chargesMenuCategory' align='center'>
                     <div>Category</div>
                     <InputLabel htmlFor="select"/>
-                    <NativeSelect onSubmit={this.handleOnClick} id="select">
+                    <NativeSelect onChange={this.handleOnChange} id="select">
                         <option value="Category">Select category</option>
                         <option value="Food">Food</option>
                         <option value="Restaurants">Restaurant</option>
@@ -119,7 +119,7 @@ class ProductHeadRow extends React.Component {
                     <div>Total, $</div>
                     <InputLabel htmlFor="select"/>
                     <NativeSelect onChange={this.handleMoneyOnClick} id="select">
-                        <option value="Category">To sort money</option>
+                        <option value="Category">Sort money</option>
                         <option value="More">More</option>
                         <option value="Less">Less</option>
                     </NativeSelect></th>

@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     },
 });
 
-    function AddNewCharge(props) {
+    const AddNewCharge=(props)=> {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
@@ -36,6 +36,7 @@ const useStyles = makeStyles({
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
+        console.log(e.target[0].value)
         const newRow = {
             id: Math.floor(Math.random()*100),
             category: e.target[2].value,
