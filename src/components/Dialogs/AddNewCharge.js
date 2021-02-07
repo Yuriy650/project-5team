@@ -7,7 +7,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 
 
 const useStyles = makeStyles({
@@ -19,10 +19,9 @@ const useStyles = makeStyles({
         color: "#fff",
         textShadow: "0 1px 0 #2f2f2f"
     },
-  });
+});
 
-
-function AddNewCharge() {
+    const AddNewCharge=(props)=> {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
@@ -34,16 +33,33 @@ function AddNewCharge() {
         setOpen(false);
     };
 
+
+    const handleOnSubmit = (e) => {
+        e.preventDefault();
+        console.log(e.target[0].value)
+        const newRow = {
+            id: Math.floor(Math.random()*100),
+            category: e.target[2].value,
+            description: e.target[1].value,
+            date: e.target[3].value,
+            total: e.target[0].value
+        };
+        localStorage.setItem(`${newRow.id}`, JSON.stringify(newRow));
+        props.products.push(newRow);
+        props.handleOnSubmit();
+    }
+
     return (
         <div>
-            <Button variant="outlined"  onClick={handleClickOpen} className={classes.root}>Add new charge</Button>
+            <Button variant="outlined" onClick={handleClickOpen} className={classes.root}>Add new charge</Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">New charge</DialogTitle>
-
-                <DialogContent>
+                <form onSubmit={handleOnSubmit}>
+                <DialogContent >
                     <TextField
                         autoFocus
                         margin="dense"
+                        placeholder="only number"
                         id="total"
                         label="Total"
                         type="text"
@@ -57,31 +73,28 @@ function AddNewCharge() {
                         type="text"
                         fullWidth
                     />
-
-
                     <InputLabel id="demo-controlled-open-select-label">Select category</InputLabel>
-                    <Select native onChange={handleClickOpen} labelId="demo-controlled-open-select-label">
-                        <option aria-label="None" value="" />
-                        <option>Food</option>
-                        <option>Clothes</option>
-                        <option>Pets</option>
-                        <option>Restaurants</option>
+                    <Select native id='category' labelId="demo-controlled-open-select-label">
+                        <option aria-label="None" value=""/>
+                        <option id='Food' value='Food'>Food</option>
+                        <option id='Clothes' value='Clothes'>Clothes</option>
+                        <option id='Pets' value='Pets'>Pets</option>
+                        <option id='Restaurants' value='Restaurants'>Restaurants</option>
+                        <option id='Fuel' value='Fuel'>Fuel</option>
+                        <option id='Utility bills' value='Utility bills'>Utility Bills</option>
                     </Select>
-
                     <InputLabel id="test">Date</InputLabel>
                     <TextField
                         labelId="test"
                         id="date"
                         type="date"
                     />
-
                 </DialogContent>
-
                 <DialogActions>
                     <Button onClick={handleClose} color="primary">Cancel</Button>
-                    <Button onClick={handleClose} color="primary">Add new charge</Button>
+                    <Button onClick={handleClose} type='submit' color="primary">Add new charge</Button>
                 </DialogActions>
-
+                </form>
             </Dialog>
         </div>
     );

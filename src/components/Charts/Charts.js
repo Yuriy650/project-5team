@@ -1,20 +1,28 @@
 import React, {Component} from 'react';
+import ChartsOfCharges from "./ChartsOfCharges";
+import ChartsOfIncomes from "./ChartsOfIncomes";
+import ChartsIncomeCharges from "./ChartsIncomeCharges";
 
-class Charts extends Component {
+export default class Charts extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-
-        }
+        this.state = {};
     }
-render() {
+
+    render() {
         return (
             <div>
-                Charts srrtyreueyt
+                <ChartsOfCharges dataCharges={this.props.dataCharges}
+                                 changeChart={this.props.changeChart}
+                                 chargesCategories={this.props.chargesCategories}
+                />
+                <ChartsOfIncomes dataIncomes={this.props.dataIncomes}
+                                 changeIncomesChart={this.props.changeChart}
+                                 changeState={this.props.changeState}
+                                 incomesCategories={this.props.incomesCategories}/>
+                <ChartsIncomeCharges                    />
             </div>
-        )
-}
 
+        );
+    }
 }
-
-export default Charts;

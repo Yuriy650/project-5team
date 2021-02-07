@@ -1,24 +1,18 @@
 import React, {Component} from 'react';
 
+
 class Home extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-
-        }
+        this.state = {}
     }
+
     render() {
         return (
-            <div>
-
-                Home dthsrst
-=======
-                Hom
->>>>>>> 8397f9d3d79215b763a7d613c35b160c5a7e154b
-=======
-                Home
->>>>>>> 06b4792371f4bb2387201546a0731dcfb75c9396
-
+            <div className='text'>
+                <p>Веб-додаток для обліку доходів та витрат. Працює без входу, всі дані зберігаємо в localStorage.</p>
+                <p>Додаток зроблено на Реакті. Дані можна фільтрувати в залежності від вибраного періоду і сортувати по категоріях і коштах.</p>
+                <p>Окремі таби для доходів і видатків. </p>
             </div>
         )
     }
