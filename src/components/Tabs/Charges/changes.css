@@ -1,0 +1,56 @@
+.title {
+  text-align: center;
+  color: #642e0e;
+  text-shadow: #d5ff16 2px 2px 2px 2px;
+
+}
+/*.chargesMenuCategory  {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 20px;
+
+}
+
+.chargesMenuTotal  {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 20px;
+
+
+}
+*/
+.chargesMenuDate  {
+  display: inline-block;
+  align-items: baseline;
+  padding-left: 20px;
+
+}
+.date-textField {
+  padding: 10px;
+}
+.dateBtn {
+  display: inline-block;
+  padding: 5px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #282c34;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 2px #999;
+  position: absolute;
+  margin-left: 20px;
+}
+.dateBtn:hover {background-color: #ffba24}
+
+.dateBtn:active {
+  background-color: #282c34;
+  box-shadow: 0 2px #999;
+  transform: translateY(4px);
+}
+
+
+
