@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
-import Navigation from "./components/Navigation";
+import Navigation from "./components/Tabs/Navigation";
 import TabsContent from "./components/Tabs/TabsContent";
 import AddNewCategory from "./components/Dialogs/AddNewCategory";
 import AddNewCharge from "./components/Dialogs/AddNewCharge";
@@ -9,6 +9,26 @@ import {BrowserRouter} from "react-router-dom";
 import Charts from "./components/Charts/Charts";
 import addCategory from "./Redux/actions/add-category-action";
 
+<<<<<<< HEAD
+function App() {
+  return (
+  <div className="main-page">
+  <div className="main-wrapper">
+      <Navigation />
+  </div>
+  <div className="main-btn">
+    <div className="bnt-add">
+    <AddNewCategory />
+    <AddNewCharge />
+    <AddNewIncome />
+    </div>
+    <div className="bnt-tabs">
+    <TabsContent />
+    </div>
+  </div>
+  </div>
+  )
+=======
 
 class App extends Component {
     constructor(props) {
@@ -201,6 +221,7 @@ class App extends Component {
             </BrowserRouter>
         )
     }
+>>>>>>> c91a0ab96dc7b782c793cba7e69b6e79ced90a6f
 }
 
 export default App;

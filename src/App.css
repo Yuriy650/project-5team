@@ -4,6 +4,8 @@ body {
 a {
   text-decoration: none;
 }
+<<<<<<< HEAD
+=======
 .app-wrapper {
   display: flex;
   flex-direction: column;
@@ -59,6 +61,7 @@ a {
   color: #61dafb;
 }
 
+>>>>>>> c91a0ab96dc7b782c793cba7e69b6e79ced90a6f
 .main-page {
   display: flex;
 }
@@ -74,6 +77,9 @@ a {
   display: flex;
   justify-content: center;
 }
+<<<<<<< HEAD
+
+=======
 .appbar {
   color: black;
 }
@@ -95,3 +101,4 @@ a {
   margin-right: 40px;
   padding-right: 20px;
 }
+>>>>>>> c91a0ab96dc7b782c793cba7e69b6e79ced90a6f

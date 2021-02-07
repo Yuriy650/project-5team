@@ -1,7 +1,17 @@
 import React from 'react';
+<<<<<<< HEAD:src/components/Tabs/Navigation.js
+import Header from "../Header/Header";
+import Navbar from "../Navbar/Navbar";
+import Home from "../Home/Home";
+import Charts from "../Charts/Charts";
+import Categories from "../Categories/Categories";
+import {BrowserRouter, Route} from "react-router-dom";
+import "./navigations.css"
+=======
 import Header from "./Header/Header";
 import Navbar from "./Navbar/Navbar";
 
+>>>>>>> c91a0ab96dc7b782c793cba7e69b6e79ced90a6f:src/components/Navigation.js
 
 const Navigation = (props) => {
     return (
