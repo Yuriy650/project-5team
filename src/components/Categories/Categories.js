@@ -10,16 +10,18 @@ import LocalGasStationIcon from "@material-ui/icons/LocalGasStation";
 import PetsIcon from "@material-ui/icons/Pets";
 import DescriptionIcon from "@material-ui/icons/Description";
  import "./categories.css";
+import addCategory from "../../Redux/actions/add-category-action";
+import {connect} from "react-redux";
 
 
- 
+
 
 class Categories extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            products: [
-                {category:<Grid align={'center'}><RestaurantMenuRoundedIcon color={"primary"}/> Food </Grid>,
+            categories: [
+                {category:<Grid align={'center'}><RestaurantMenuRoundedIcon color={"primary"}/>Food </Grid>,
                     description: 'ashan', date: '21.01.2021'},
                 {category:<Grid align={'center'}><ShoppingBasketIcon color={"primary"}/> Clothes </Grid>,
                     description: 'forum', date: '18.01.2021'},
@@ -34,19 +36,21 @@ class Categories extends Component {
             ]
 
         }
+
     }
+
     render() {
         return (
             <div>
                 <h1>Categories</h1>
                 <Table >
                     <TableHead >
-                    <ProductHeadRow />
+                    <CategoriesHeadRow />
                     </TableHead>
                     <TableBody className="center">
-                    {this.state.products.map(item => {
-                        return <ProductRow category={item.category} description={item.description}
-                                           date={item.date} money={item.money}/>
+                    {this.props.state.categories.map(item => {
+                        return <CategoriesRow category={item.category} description={item.description}
+                                           date={item.date} />
                     })}
                     </TableBody>
                 </Table>
@@ -55,7 +59,7 @@ class Categories extends Component {
     }
 }
 
-class ProductHeadRow extends React.Component {
+class CategoriesHeadRow extends React.Component {
     render() {
         return (
             <tr className="header_tr">
@@ -68,7 +72,7 @@ class ProductHeadRow extends React.Component {
     }
 }
 
-class ProductRow extends React.Component {
+class CategoriesRow extends React.Component {
     render() {
         return (
             <tr>
@@ -81,5 +85,10 @@ class ProductRow extends React.Component {
     }
 
 }
+const mapStateToProps = (state) => {
+    return {
 
-export default Categories;
+        state: state.categories
+    };
+};
+export default connect(mapStateToProps, {addCategory})(Categories)

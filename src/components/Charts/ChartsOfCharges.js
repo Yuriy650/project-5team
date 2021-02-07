@@ -1,30 +1,28 @@
 import React, {Component} from 'react';
 import Paper from '@material-ui/core/Paper';
 import {Chart, PieSeries, Title,} from '@devexpress/dx-react-chart-material-ui';
-
 import {Animation} from '@devexpress/dx-react-chart';
-
-export default class ChartsOfIncomes extends Component {
+export default class ChartsOfCharges extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            incomesCategories: ['Salary', 'Rent', 'Bonuses', 'Deposits', 'Profits', 'Sale of property']
+            chargesCategories: ['Food', 'Clothes', 'Restaurants', 'Fuel', 'Pets', 'Utility bills']
         };
+        this.takeDataCharges=this.takeDataCharges.bind(this);
     }
-    takeDataIncomes = () => {
-        let dataIncomes = [];
+    takeDataCharges = () => {
+
+        let dataCharges = [];
         for (let i = 0; i < localStorage.length; i++) {
             let newRow = JSON.parse(localStorage.getItem(`${localStorage.key(i)}`));
-            if (this.state.incomesCategories.includes(newRow.category)) {
-                dataIncomes.push(newRow);
-
+           if (this.state.chargesCategories.includes(newRow.category)) {
+                dataCharges.push(newRow);
             }
         }
-        return dataIncomes;
+        return dataCharges;
     }
     render() {
-
-        const chartData = this.takeDataIncomes();
+        const chartData = this.takeDataCharges();
         return (
             <Paper>
                 <Chart
@@ -36,12 +34,11 @@ export default class ChartsOfIncomes extends Component {
                         innerRadius={0.6}
                     />
                     <Title
-                        text="All incomes for the month"
+                        text="All charges for the month"
                     />
                     <Animation />
                 </Chart>
             </Paper>
         );
-
     }
 }

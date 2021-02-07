@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     },
 });
 
-    function AddNewCharge(props) {
+    const AddNewCharge=(props)=> {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
@@ -36,14 +36,16 @@ const useStyles = makeStyles({
 
     const handleOnSubmit = (e) => {
         e.preventDefault();
+        console.log(e.target[0].value)
         const newRow = {
             id: Math.floor(Math.random()*100),
             category: e.target[2].value,
             description: e.target[1].value,
             date: e.target[3].value,
-            money: e.target[0].value
+            total: e.target[0].value
         };
         localStorage.setItem(`${newRow.id}`, JSON.stringify(newRow));
+        props.products.push(newRow);
         props.handleOnSubmit();
     }
 
@@ -58,7 +60,7 @@ const useStyles = makeStyles({
                         autoFocus
                         margin="dense"
                         placeholder="only number"
-                        id="money"
+                        id="total"
                         label="Total"
                         type="text"
                         fullWidth
