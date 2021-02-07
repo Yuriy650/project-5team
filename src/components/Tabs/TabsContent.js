@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../App.css';
+import "./tabs.css"
 import {AppBar, Tabs, Tab } from '@material-ui/core';
 import Content from "./Content";
 import SecondContent from "./SecondContent";
@@ -16,7 +16,7 @@ const SimpleTabs = () => {
       <div className="tabs-wrapper">
         <div > 
         <AppBar position="static"  style={{ background: '#848482' }}>
-          <Tabs value={value} onChange={handleTabs}>
+          <Tabs value={value} onChange={handleTabs} TabIndicatorProps={{style: {background:'white'}}}>
             <Tab label="Charges"  />
             <Tab label="Incones"/>
           </Tabs>

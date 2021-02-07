@@ -1,12 +1,6 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
-
-
-
-// import Home from "../Home/Home";
-// import Charts from "../Charts/Charts";
-// import Categories from "../Categories/Categories";
-
+import "./navbar.css"
 function Navbar() {
     return (
         <nav className='navbar'>

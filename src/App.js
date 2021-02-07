@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Navigation from "./components/Navigation";
+import Navigation from "./components/Tabs/Navigation";
 import TabsContent from "./components/Tabs/TabsContent";
 import AddNewCategory from "./components/Dialogs/AddNewCategory";
 import AddNewCharge from "./components/Dialogs/AddNewCharge";
@@ -18,7 +18,6 @@ function App() {
     <AddNewCharge />
     <AddNewIncome />
     </div>
-    
     <div className="bnt-tabs">
     <TabsContent />
     </div>
