@@ -1,0 +1,9 @@
+.header {
+  text-align: left;
+}
+
+.header img {
+  align-self: center;
+  height: 120px;
+  width: 140px;
+}

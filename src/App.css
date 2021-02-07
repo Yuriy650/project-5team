@@ -1,16 +1,47 @@
+body {
+  background-color: dimgray;
+}
+a {
+  text-decoration: none;
+}
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+.header {
+  background-color: darkgrey;
+}
+
+.navbar {
+  min-height: 100vh;
+  background-color: darkgrey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbar-wrapper {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar-wrapper div a {
+  color: white;
+  font-size: 1.5em;
+  letter-spacing: 0.07em;
+  border: none;
+}
+.navbar-wrapper div a:hover {
+  border-bottom: 1px solid darkorange;
+  padding-bottom: 4px;
+}
+.content {
+  grid-area: content;
+}
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 .App-header {
@@ -28,11 +59,39 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main-page {
+  display: flex;
+}
+.main-btn {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.bnt-add {
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.appbar {
+  color: black;
+}
+.balance {
+  font-family: sans-serif;
+  font-weight: bold;
+  color: #ff8920;
+  font-size: xx-large;
+  text-align: right;
+  margin-right: 40px;
+  padding-right: 20px;
+}
+.balance-attention {
+  font-family: sans-serif;
+  font-weight: bold;
+  color: #ff300d;
+  font-size: xx-large;
+  text-align: right;
+  margin-right: 40px;
+  padding-right: 20px;
 }
